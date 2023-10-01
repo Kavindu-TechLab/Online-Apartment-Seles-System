@@ -23,29 +23,29 @@
 
 .navbar-right ul li {
     display: inline;
-    margin-right: 20px; /* Adjust the spacing between navigation links */
+    margin-right: 20px;
 }
 
 .navbar-right ul li:last-child {
-    margin-right: 0; /* Remove right margin from the last link */
+    margin-right: 0; 
 }
 
 .navbar-right ul li a {
     text-decoration: none;
-    color: rgba(84, 61, 33, 1); /* Change to your desired link color */
+    color: rgba(84, 61, 33, 1); 
 }
 
 .navbar-right ul li a:hover {
-    text-decoration: underline; /* Add underline on hover, or customize as desired */
+    text-decoration: underline; 
 }
 
 .navbar-right ul li {
     display: inline;
-    margin-right: 20px; /* Adjust the spacing between navigation links */
+    margin-right: 20px;
 }
 
 .navbar-right ul li:last-child {
-    margin-right: 0; /* Remove right margin from the last link */
+    margin-right: 0;
 }
 
 .navbar-right ul li a {
@@ -81,7 +81,6 @@
     max-width: 50%;
     padding-right: 20px;
 }
-
 
 .footer-left a img {
     max-height: 80px;
