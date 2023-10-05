@@ -21,7 +21,7 @@
 
     <div class="container">
 
-        <form action="process_listing.php" method="post">
+        <form action="process_listing.php" method="post" enctype="multipart/form-data">
                 <div class="form-box">
                     <!-- Main Details -->
                     <div class = "main_details">
