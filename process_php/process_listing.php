@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $utilities = isset($_POST["utilities"]) ? implode(", ", $_POST["utilities"]) : "";
 
     $uploadedImages = array();
-    $targetDirectory = "uploads/";
+    $targetDirectory = "uploads/listings_photoes/";
 
     // Check if files were uploaded
     if(isset($_FILES['image']) && !empty($_FILES['image']['name'][0])) {
