@@ -149,3 +149,14 @@ h1 {
     color: rgba(84, 61, 33, 1);
     border: 2px solid rgba(242, 138, 10, 1);
 }
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    text-align: left;
+    letter-spacing: 2px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
