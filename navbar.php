@@ -5,7 +5,7 @@
     <div class="navbar-right">
         <ul>
             <li><a href="index.php">Home</a></li>
-            <li><a href="allListings.php">Property Listings</a></li>
+            <li><a href="all_listings.php">Property Listings</a></li>
             <?php
             // Check if the user is logged in
             if(isset($_SESSION["user_id"])) {
