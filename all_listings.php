@@ -38,22 +38,28 @@ session_start();
                 $firstImagePath = isset($imagePaths[0]) ? $imagePaths[0] : '';
 
                 echo '<div class="listing">';
-                if (!empty($firstImagePath)) {
-                    echo '<div class="listing-photo"><img src="process_php/' . $firstImagePath . '" alt="Listing Photo"></div>';
-                } else {
-                    echo '<div class="listing-photo">No Image Available</div>';
-                }
-                echo '<div class="listing-info">';
-                echo '<div class="listing-price">Rs ' . $row['price'] . '</div>';
-                echo '<div class="listing-title">' . $row['title'] . '</div>';
-                echo '<div class="listing-address"><img src="images/placeholder.png" alt="Bed">' . $row['address'] . '</div>';
-                echo '<div class="listing-icons">';
-                echo '<div class="icon-bed"><img src="images/bed.png" alt="Bed">' . $row['bedrooms'] . '</div>';
-                echo '<div class="icon-bath"><img src="images/bath.png" alt="Bath">' . $row['bathrooms'] . '</div>';
-                echo '<div class="icon-size"><img src="images/size.png" alt="Size">' . $row['size'] . ' sqft</div>';
-                echo '</div>';
-                echo '<div class="listing-date"><img src="images/calendar.png" alt="Date">' . date('Y-m-d', strtotime($row['date'])) . '</div>';
-                echo '</div>';
+                    echo '<div class="listing-photo">';
+                        if (!empty($firstImagePath)) {
+                            echo '<div><img src="process_php/' . $firstImagePath . '" alt="Listing Photo"></div>';
+                        } else {
+                            echo '<div class="listing-photo">No Image Available</div>';
+                        }
+                        echo '<div class="listing-price">Rs ' . $row['price'] . '.00</div>';
+                        echo '<div class="listing-type">' . $row['listing_type'] . '</div>';
+                    echo '</div>';
+                    echo '<div class="listing-info">';
+                        echo '<div class="listing-title">' . $row['title'] . '</div>';
+                        echo '<div class="listing-address"><img src="images/placeholder.png" alt="Bed">' . $row['city'] . '</div>';
+                        echo '<div class="listing-icons">';
+                        echo '<div class="icon-bed"><img src="images/bed.png" alt="Bed">' . $row['bedrooms'] . '</div>';
+                        echo '<div class="icon-bath"><img src="images/bath.png" alt="Bath">' . $row['bathrooms'] . '</div>';
+                        echo '<div class="icon-size"><img src="images/size.png" alt="Size">' . $row['size'] . ' sqft</div>';
+                        echo '</div>';
+                        echo '<div class="listing-publish">';
+                            echo '<div class="listing-date"><img src="images/calendar.png" alt="Date">' . date('Y-m-d', strtotime($row['date'])) . '</div>';
+                            echo '<div class="publisher-icon"><img src="images/user.png" alt="Publisher">BY : ' . $row['f_name'] . '</div>';
+                        echo '</div>';
+                    echo '</div>';
                 echo '</div>';
             }
         echo '</div>';    
