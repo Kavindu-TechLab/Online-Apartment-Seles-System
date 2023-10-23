@@ -1,41 +1,18 @@
 <?php
 session_start();
-?>
 
-<!DOCTYPE html>
-<html lang="en">
+if(isset($_GET['location'])) {
+    $searchLocation = $_GET['location'];
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Listings</title>
-    <link rel="stylesheet" type="text/css" href="style/style.css">
-    <link rel="stylesheet" type="text/css" href="style/style_listings.css">
-</head>
+    include('db_connection.php'); 
 
-<body>
+    // Fetch data from the database based on the search query
+    $sql = "SELECT * FROM listing_details WHERE city LIKE '%$searchLocation%'";
+    $result = $conn->query($sql);
 
-    <!-- Include the navigation bar -->
-    <?php include('navbar.php'); ?>
-
-    <div class="search-container">
-        <form action="process_php/search.php" method="GET">
-            <input type="text" id="search-input" name="location" placeholder="Search Location...">
-            <button type="submit" id="search-button"><img src="images/search.png" alt="Search"></button>
-        </form>
-    </div>
-
-    <div class="all-listing-container">
-        <?php
-        include('process_php/db_connection.php'); 
-
-        // Fetch data from the database
-        $sql = "SELECT * FROM listing_details";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0) {
-
-            echo '<div class="listing-container">';
+    // Check if there are search results
+    if ($result->num_rows > 0) {
+        echo '<div class="listing-container">';
             while($row = $result->fetch_assoc()) {
 
                 // Split the image paths into an array
@@ -69,19 +46,15 @@ session_start();
                     echo '</div>';
                 echo '</div>';
             }
-        echo '</div>';    
-        }        
-        else {
-            echo "No listings available";
-        }
+        echo '</div>';
+    } else {
+        echo "No listings found for the location: " . htmlspecialchars($searchLocation);
+    }
+}
+else {
+    echo "No search query provided.";
+}
 
-        $conn->close();
-        ?>
-    </div>
+$conn->close();
+?>
 
-    <!-- Include the footer -->
-    <?php include('footer.php'); ?>
-    
-</body>
-
-</html>

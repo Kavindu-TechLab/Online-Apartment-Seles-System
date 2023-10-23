@@ -1,6 +1,12 @@
 <?php
+
+session_start();
+
+include('db_connection.php');
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve data from the form
+
+    $user_id = $_SESSION["user_id"];
     $listingType = $_POST["listingType"];
     $title = $_POST["title"];
     $propertyType = $_POST["propertyType"];
@@ -43,11 +49,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $imagePaths = "";
     }
 
-    include('db_connection.php');
-
     // Insert data into the database
-    $sql = "INSERT INTO listing_details (listing_type, title, property_type, address, city, total_units, bedrooms, bathrooms, price, size, features, kitchen, outdoor_spaces, living_spaces, utilities, li_image, description, f_name, l_name, email, p_no)
-            VALUES ('$listingType', '$title', '$propertyType', '$address', '$city', '$totalUnits', '$bedrooms', '$bathrooms', '$price', '$size', '$features', '$kitchens', '$outdoorSpaces', '$livingSpaces', '$utilities', '$imagePaths', '$description', '$firstName', '$lastName', '$email', '$phone')";
+    $sql = "INSERT INTO listing_details (user_id, listing_type, title, property_type, address, city, total_units, bedrooms, bathrooms, price, size, features, kitchen, outdoor_spaces, living_spaces, utilities, li_image, description, f_name, l_name, email, p_no)
+            VALUES ('$user_id', '$listingType', '$title', '$propertyType', '$address', '$city', '$totalUnits', '$bedrooms', '$bathrooms', '$price', '$size', '$features', '$kitchens', '$outdoorSpaces', '$livingSpaces', '$utilities', '$imagePaths', '$description', '$firstName', '$lastName', '$email', '$phone')";
 
     if ($conn->query($sql) === TRUE) {
         echo "New record created successfully";

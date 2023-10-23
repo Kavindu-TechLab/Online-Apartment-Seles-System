@@ -4,6 +4,48 @@ body {
     font-family: Arial, sans-serif;
 }
 
+.search-container form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+}
+
+/* Default styles for the input field */
+input[type="text"] {
+    padding: 10px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    width: 60%;
+    height: 25px;
+  }
+
+input[type="text"]:focus {
+    border: 3px solid rgba(242, 138, 10, 1);
+    outline: none;
+}
+
+#search-button {
+    background-color: #fff;
+    border: 3px solid rgba(242, 138, 10, 1);
+    padding: 4px 9px;
+    border-radius: 5px;
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+#search-button img {
+    max-width: 32px;
+    max-height: 32px;
+    vertical-align: center;
+}
+
+
 .listing-container {
     display: flex;
     flex-wrap: wrap;
@@ -14,7 +56,7 @@ body {
 .listing {
     margin: 20px;
     width: 320px;
-    height: 480px;
+    height: 505px;
     border: 3px solid rgba(84, 61, 33, 1);
     font-size: 15px;
     font-weight: bold;
@@ -130,7 +172,7 @@ body {
 .listing-publish img {
     max-width: 25px;
     max-height: 25px;
-    margin-right: 5px;
+    margin-left: 5px;
 }
 
 .listing-date {
@@ -144,7 +186,7 @@ body {
 
 .publisher-icon {
     position: relative;
-    right: 180px;
+    right: 175px;
     margin-top: 20px;
     margin-bottom: 10px;
     display: flex;
