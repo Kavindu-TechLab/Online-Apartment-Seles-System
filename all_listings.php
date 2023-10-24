@@ -9,6 +9,7 @@ $bedrooms = '';
 $propertyType = '';
 $minPrice = '';
 $maxPrice = '';
+$propertyCount = 0;
 
 // Check if filter values are provided in the URL
 if(isset($_GET['location'])) {
@@ -34,7 +35,8 @@ if(isset($_GET['maxPrice'])) {
 $sql = "SELECT * FROM listing_details WHERE 1";
 
 if(!empty($location)) {
-    $sql .= " AND city LIKE '%$location%'";
+    $searchLocation = strtolower($location);
+    $sql .= " AND (LOWER(city) LIKE '%$searchLocation%' OR UPPER(city) LIKE '%$searchLocation%')";
 }
 
 if(!empty($listingType)) {
@@ -99,6 +101,18 @@ $result = $conn->query($sql);
         </form>
     </div>
 
+    <!-- Display total properties found after search or filter -->
+    <?php
+    echo '<div class="noOfProperty">';
+        if ($result->num_rows > 0) {
+            $propertyCount = $result->num_rows;
+            echo '<div>Showing ' . $propertyCount . ' Properties</div>';
+        } else {
+            echo '<div>No properties found</div>';
+        }
+    echo '</div>';
+    ?>
+
     <div class="all-listing-container">
         <?php
         include('process_php/db_connection.php'); 
@@ -151,9 +165,7 @@ $result = $conn->query($sql);
                             echo '</div>';
                         echo '</div>';
                     echo '</div>';
-                }
-                else {
-                    echo "No propeties available";
+                    $propertyCount++; // Increment property count
                 }
             }
         echo '</div>';    
