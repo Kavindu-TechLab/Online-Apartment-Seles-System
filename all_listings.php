@@ -31,7 +31,12 @@ if(isset($_GET['maxPrice'])) {
 }
 
 // Construct the SQL query based on filters
-$sql = "SELECT * FROM listing_details WHERE city LIKE '%$location%'";
+$sql = "SELECT * FROM listing_details WHERE 1";
+
+if(!empty($location)) {
+    $sql .= " AND city LIKE '%$location%'";
+}
+
 if(!empty($listingType)) {
     $sql .= " AND listing_type = '$listingType'";
 }
@@ -50,6 +55,7 @@ if(!empty($maxPrice)) {
 
 $result = $conn->query($sql);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -85,11 +91,10 @@ $result = $conn->query($sql);
                     <option value="Single Family Home">Single Family Home</option>
                     <option value="Room">Room</option>
                     <option value="Apartment">Apartment</option>
-                    <!-- Add more property types as needed -->
                 </select>
                 <input type="number" name="minPrice" placeholder="Min Price">
                 <input type="number" name="maxPrice" placeholder="Max Price">
-                <button type="submit" id="search-button"><img src="images/filter.png" alt="Search"></button>
+                <button type="submit" id="filter-button"><img src="images/filter.png" alt="Filter"></button>
             </div>
         </form>
     </div>
@@ -107,7 +112,14 @@ $result = $conn->query($sql);
             echo '<div class="listing-container">';
             while($row = $result->fetch_assoc()) {
 
-                if (strpos($row['city'], $location) !== false) {
+                if (
+                    (strpos($row['city'], $location) !== false || empty($location)) &&
+                    ($row['listing_type'] == $listingType || empty($listingType)) &&
+                    ($row['bedrooms'] == $bedrooms || empty($bedrooms)) &&
+                    ($row['property_type'] == $propertyType || empty($propertyType)) &&
+                    ($row['price'] >= $minPrice || empty($minPrice)) &&
+                    ($row['price'] <= $maxPrice || empty($maxPrice))
+                ) {
 
                     // Split the image paths into an array
                     $imagePaths = explode(',', $row['li_image']);
@@ -157,3 +169,4 @@ $result = $conn->query($sql);
 </body>
 
 </html>
+

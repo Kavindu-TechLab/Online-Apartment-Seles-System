@@ -91,6 +91,24 @@ input[type="text"]:focus {
     outline: none;
 }
 
+#filter-button {
+    background-color: #fff;
+    border: 3px solid rgba(242, 138, 10, 1);
+    padding: 4px 9px;
+    border-radius: 5px;
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+#filter-button img {
+    max-width: 32px;
+    max-height: 32px;
+    vertical-align: center;
+}
+
 .listing-container {
     display: flex;
     flex-wrap: wrap;
