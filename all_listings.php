@@ -152,11 +152,14 @@ $result = $conn->query($sql);
                         echo '</div>';
                     echo '</div>';
                 }
+                else {
+                    echo "No propeties available";
+                }
             }
         echo '</div>';    
         }        
         else {
-            echo "No listings available";
+            echo "No properties available";
         }
 
         $conn->close();
