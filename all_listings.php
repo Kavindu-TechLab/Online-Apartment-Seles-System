@@ -126,49 +126,51 @@ $result = $conn->query($sql);
             echo '<div class="listing-container">';
             while($row = $result->fetch_assoc()) {
 
-                if (
-                    (strpos($row['city'], $location) !== false || empty($location)) &&
-                    ($row['listing_type'] == $listingType || empty($listingType)) &&
-                    ($row['bedrooms'] == $bedrooms || empty($bedrooms)) &&
-                    ($row['property_type'] == $propertyType || empty($propertyType)) &&
-                    ($row['price'] >= $minPrice || empty($minPrice)) &&
-                    ($row['price'] <= $maxPrice || empty($maxPrice))
-                ) {
+                echo '<a href="listing_view.php?id=' . $row['id'] . '" class="property-link">';
 
-                    // Split the image paths into an array
-                    $imagePaths = explode(',', $row['li_image']);
+                    if (
+                        (strpos($row['city'], $location) !== false || empty($location)) &&
+                        ($row['listing_type'] == $listingType || empty($listingType)) &&
+                        ($row['bedrooms'] == $bedrooms || empty($bedrooms)) &&
+                        ($row['property_type'] == $propertyType || empty($propertyType)) &&
+                        ($row['price'] >= $minPrice || empty($minPrice)) &&
+                        ($row['price'] <= $maxPrice || empty($maxPrice))) 
+                    {
+                        // Split the image paths into an array
+                        $imagePaths = explode(',', $row['li_image']);
 
-                    // Get the first image path, you can modify this logic based on your requirements
-                    $firstImagePath = isset($imagePaths[0]) ? $imagePaths[0] : '';
+                        // Get the first image path, you can modify this logic based on your requirements
+                        $firstImagePath = isset($imagePaths[0]) ? $imagePaths[0] : '';
 
-                    echo '<div class="listing">';
-                        echo '<div class="listing-photo">';
-                            if (!empty($firstImagePath)) {
-                                echo '<div><img src="process_php/' . $firstImagePath . '" alt="Listing Photo"></div>';
-                            } else {
-                                echo '<div class="listing-photo">No Image Available</div>';
-                            }
-                            echo '<div class="listing-price">Rs ' . $row['price'] . '.00</div>';
-                            echo '<div class="listing-type">' . $row['listing_type'] . '</div>';
-                        echo '</div>';
-                        echo '<div class="listing-info">';
-                            echo '<div class="listing-title">' . $row['title'] . '</div>';
-                            echo '<div class="listing-address"><img src="images/placeholder.png" alt="Bed">' . $row['city'] . '</div>';
-                            echo '<div class="listing-icons">';
-                            echo '<div class="icon-bed"><img src="images/bed.png" alt="Bed">' . $row['bedrooms'] . '</div>';
-                            echo '<div class="icon-bath"><img src="images/bath.png" alt="Bath">' . $row['bathrooms'] . '</div>';
-                            echo '<div class="icon-size"><img src="images/size.png" alt="Size">' . $row['size'] . ' sqft</div>';
+                        echo '<div class="listing">';
+                            echo '<div class="listing-photo">';
+                                if (!empty($firstImagePath)) {
+                                    echo '<div><img src="process_php/' . $firstImagePath . '" alt="Listing Photo"></div>';
+                                } else {
+                                    echo '<div class="listing-photo">No Image Available</div>';
+                                }
+                                echo '<div class="listing-price">Rs ' . $row['price'] . '.00</div>';
+                                echo '<div class="listing-type">' . $row['listing_type'] . '</div>';
                             echo '</div>';
-                            echo '<div class="listing-publish">';
-                                echo '<div class="listing-date"><img src="images/calendar.png" alt="Date">' . date('Y-m-d', strtotime($row['date'])) . '</div>';
-                                echo '<div class="publisher-icon"><img src="images/user.png" alt="Publisher">BY : ' . $row['f_name'] . '</div>';
+                            echo '<div class="listing-info">';
+                                echo '<div class="listing-title">' . $row['title'] . '</div>';
+                                echo '<div class="listing-address"><img src="images/placeholder.png" alt="Bed">' . $row['city'] . '</div>';
+                                echo '<div class="listing-icons">';
+                                echo '<div class="icon-bed"><img src="images/bed.png" alt="Bed">' . $row['bedrooms'] . '</div>';
+                                echo '<div class="icon-bath"><img src="images/bath.png" alt="Bath">' . $row['bathrooms'] . '</div>';
+                                echo '<div class="icon-size"><img src="images/size.png" alt="Size">' . $row['size'] . ' sqft</div>';
+                                echo '</div>';
+                                echo '<div class="listing-publish">';
+                                    echo '<div class="listing-date"><img src="images/calendar.png" alt="Date">' . date('Y-m-d', strtotime($row['date'])) . '</div>';
+                                    echo '<div class="publisher-icon"><img src="images/user.png" alt="Publisher">BY : ' . $row['f_name'] . '</div>';
+                                echo '</div>';
                             echo '</div>';
                         echo '</div>';
-                    echo '</div>';
-                    $propertyCount++; // Increment property count
-                }
+                        $propertyCount++; // Increment property count
+                    }
+                echo '</a>';
             }
-        echo '</div>';    
+            echo '</div>';    
         }        
         else {
             echo "No properties available";
