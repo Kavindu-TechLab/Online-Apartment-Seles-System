@@ -16,6 +16,15 @@ if (isset($_GET['id'])) {
         $additionalPhotosRight = array_slice(explode(',', $row['li_image']), 1, 4);
         $allPhotos = array_slice(explode(',', $row['li_image']), 0, 7);
 
+        // Features, Kitchen, Outdoor Spaces, Living Spaces, and Utilities from the database
+        $features = explode(', ', $row['features']);
+        $kitchens = explode(', ', $row['kitchen']);
+        $outdoorSpaces = explode(', ', $row['outdoor_spaces']);
+        $livingSpaces = explode(', ', $row['living_spaces']);
+        $utilities = explode(', ', $row['utilities']);
+        $descriptionLines = explode("\n", $row['description']);
+
+
         // Include the navigation bar
         include('navbar.php');
 ?>
@@ -80,14 +89,187 @@ if (isset($_GET['id'])) {
                         <div class="detail-item"><?php echo $row['bathrooms']; ?> Bath</div>
                         <div class="detail-item"><?php echo $row['size']; ?> sqft</div>
                     </div>
+
+                    <hr class="hrLine">
+                    
+                    <div class="property-amenities">
+
+                        <div class="listingDetails-sub-title">
+                            <h2>Property Amenities</h2>
+                        </div>
+                        <!-- Features -->
+                        <div class="column-container">
+                            <div class="column-container-title">
+                                <p>Features:</p>
+                            </div>
+                            <div class="column-items">
+                                <div class="column-column">
+                                    <ul>
+                                        <?php
+                                        // Assuming $features is an array containing the features data
+                                        $totalFeatures = count($features);
+                                        $featuresPerColumn = ceil($totalFeatures / 3);
+
+                                        // Loop through the features and divide them into columns
+                                        $featureCounter = 0;
+                                        foreach ($features as $feature) {
+                                            echo '<li class="column-item">' . $feature . '</li>';
+                                            $featureCounter++;
+
+                                            // Start a new column after a certain number of features
+                                            if ($featureCounter % $featuresPerColumn === 0 && $featureCounter !== $totalFeatures) {
+                                                echo '</ul></div><div class="column-column"><ul>';
+                                            }
+                                        }
+                                        ?>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Kitchen -->
+                        <div class="column-container">
+                            <div class="column-container-title">
+                                <p>Kitchen:</p>
+                            </div>
+                            <div class="column-items">
+                                <div class="column-column">
+                                    <ul>
+                                        <?php
+                                        // Assuming $features is an array containing the features data
+                                        $totalKitchens = count($kitchens);
+                                        $kitchensPerColumn = ceil($totalKitchens / 3);
+
+                                        // Loop through the features and divide them into columns
+                                        $kitchensCounter = 0;
+                                        foreach ($kitchens as $kitchen) {
+                                            echo '<li class="column-item">' . $kitchen . '</li>';
+                                            $kitchensCounter++;
+
+                                            // Start a new column after a certain number of features
+                                            if ($kitchensCounter % $kitchensPerColumn === 0 && $kitchensCounter !== $totalKitchens) {
+                                                echo '</ul></div><div class="column-column"><ul>';
+                                            }
+                                        }
+                                        ?>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Outdoor Spaces -->
+                        <div class="column-container">
+                            <div class="column-container-title">
+                                <p>Outdoor Spaces:</p>
+                            </div>
+                            <div class="column-items">
+                                <div class="column-column">
+                                    <ul>
+                                        <?php
+                                        // Assuming $features is an array containing the features data
+                                        $totalOutdoorSpaces = count($outdoorSpaces);
+                                        $outdoorSpacesPerColumn = ceil($totalOutdoorSpaces / 3);
+
+                                        // Loop through the features and divide them into columns
+                                        $outdoorSpacesCounter = 0;
+                                        foreach ($outdoorSpaces as $outdoorSpace) {
+                                            echo '<li class="column-item">' . $outdoorSpace . '</li>';
+                                            $outdoorSpacesCounter++;
+
+                                            // Start a new column after a certain number of features
+                                            if ($outdoorSpacesCounter % $outdoorSpacesPerColumn === 0 && $outdoorSpacesCounter !== $totalOutdoorSpaces) {
+                                                echo '</ul></div><div class="column-column"><ul>';
+                                            }
+                                        }
+                                        ?>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Living Spaces -->
+                        <div class="column-container">
+                            <div class="column-container-title">
+                                <p>Living Spaces:</p>
+                            </div>
+                            <div class="column-items">
+                                <div class="column-column">
+                                    <ul>
+                                        <?php
+                                        // Assuming $features is an array containing the features data
+                                        $totalLivingSpaces = count($livingSpaces);
+                                        $livingSpacesPerColumn = ceil($totalLivingSpaces / 3);
+
+                                        // Loop through the features and divide them into columns
+                                        $livingSpacesCounter = 0;
+                                        foreach ($livingSpaces as $livingSpace) {
+                                            echo '<li class="column-item">' . $livingSpace . '</li>';
+                                            $livingSpacesCounter++;
+
+                                            // Start a new column after a certain number of features
+                                            if ($livingSpacesCounter % $livingSpacesPerColumn === 0 && $livingSpacesCounter !== $totalLivingSpaces) {
+                                                echo '</ul></div><div class="column-column"><ul>';
+                                            }
+                                        }
+                                        ?>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Utilities -->
+                        <div class="column-container">
+                            <div class="column-container-title">
+                                <p>Utilities:</p>
+                            </div>
+                            <div class="column-items">
+                                <div class="column-column">
+                                    <ul>
+                                        <?php
+                                        // Assuming $features is an array containing the features data
+                                        $totalUtilities = count($utilities);
+                                        $utilitiesPerColumn = ceil($totalUtilities / 3);
+
+                                        // Loop through the features and divide them into columns
+                                        $utilitiesCounter = 0;
+                                        foreach ($utilities as $utilitie) {
+                                            echo '<li class="column-item">' . $utilitie . '</li>';
+                                            $utilitiesCounter++;
+
+                                            // Start a new column after a certain number of features
+                                            if ($utilitiesCounter % $utilitiesPerColumn === 0 && $utilitiesCounter !== $totalUtilities) {
+                                                echo '</ul></div><div class="column-column"><ul>';
+                                            }
+                                        }
+                                        ?>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="description">
+                        <div class="listingDetails-sub-title">
+                            <h2>Description:</h2>
+                        </div>
+                        <ul>
+                            <?php
+                            foreach ($descriptionLines as $line) {
+                                echo '<p class="description-details">' . $line . '</p>';
+                            }
+                            ?>
+                        </ul>
+                    </div>
                 </div>
 
                 <div class="right-details">
                     <div class="contact-information">
-                        <h3>Contact Information</h3>
-                        <p>Name: <?php echo $row['f_name'] . ' ' . $row['l_name']; ?></p>
-                        <p>Email: <?php echo $row['email']; ?></p>
-                        <p>Phone: <?php echo $row['p_no']; ?></p>
+                        <h3>Contact This Property</h3>
+                        <p><?php echo $row['f_name'] . ' ' . $row['l_name']; ?></p>
+                        <p><?php echo $row['email']; ?></p>
+                        <p id="pNo"><?php echo $row['p_no']; ?></p>
                     </div>
                 </div>
             </div>
@@ -110,3 +292,4 @@ if (isset($_GET['id'])) {
 }
 
 ?>
+
