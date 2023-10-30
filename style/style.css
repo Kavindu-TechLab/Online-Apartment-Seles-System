@@ -64,6 +64,7 @@
 }
 
 .navbar-right ul li a.button {
+    font-family: Josefin sans-serif;
     background-color: rgb(242, 138, 10);
     color: #fff; 
     font-weight: bold;

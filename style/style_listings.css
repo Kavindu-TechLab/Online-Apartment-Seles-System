@@ -142,7 +142,7 @@ a {
 
 .listing {
     margin: 10px;
-    width: 320px;
+    width: 300px;
     height: 505px;
     border: 3px solid rgba(84, 61, 33, 1);
     font-size: 15px;
@@ -174,7 +174,7 @@ a {
 
 .listing-price {
     position: absolute;
-    width: 300px;
+    width: 280px;
     top: 260px;
     font-size: 25px;
     font-family:Arial, Helvetica, sans-serif;
@@ -191,7 +191,7 @@ a {
     position: absolute;
     width: 70px;
     top: 0px;
-    left: 220px;
+    left: 200px;
     text-align: center;
     font-family: Georgia, 'Times New Roman', Times, serif;
     background-color: rgba(242, 138, 10, 1);
@@ -264,7 +264,7 @@ a {
 
 .listing-date {
     position: relative;
-    left: 190px;
+    left: 180px;
     margin-top: 20px;
     margin-bottom: 10px;
     display: flex;
@@ -273,7 +273,7 @@ a {
 
 .publisher-icon {
     position: relative;
-    right: 175px;
+    right: 160px;
     margin-top: 20px;
     margin-bottom: 10px;
     display: flex;

@@ -4,6 +4,11 @@ body {
     font-family: Arial, sans-serif;
 }
 
+p {
+    margin: 0;
+    padding: 0;
+}
+
 .banner {
     width: 100%;
     justify-content: space-between;
@@ -60,7 +65,7 @@ body {
     -o-transform: rotate(25deg);
 }
 
-.left-content .button {
+.main-button {
     font-family: Josefin sans-serif;
     display: inline-block;
     background-color: rgb(242, 138, 10);
@@ -79,21 +84,122 @@ body {
 
 .top_content {
     margin-top: 60px;
+    margin-bottom: 60px;
+    width: 100%;
+    align-content: center;
     display: flex;
 }
 
-.carousel {
+.left-item {
+    width: 100%;
+    align-self: center;
+    margin-left: 200px;
+    margin-right: 100px;
+}
+
+.left-item p {
+    font-family: Josefin sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.left-item .sub-title {
     display: flex;
-    animation: moveCarousel 15s linear infinite;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-.carousel-item {
-    min-width: 100%;
+.left-item .sub-title p {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-size: 20px;
+    color: black;
 }
 
-.arrow {
-    width: 20px;
-    height: 20px;
+.content-button-section {
+    display: flex;
+    align-items: center;
+}
+
+.content-button-section p {
+    font-family: jose-sans-serif;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.content-button-section .button {
+    font-family: Josefin sans-serif;
+    display: inline-block;
+    background-color: rgba(84, 61, 33, 1);
+    color: white;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 23px;
+    margin-top: 25px;
+    border-radius: 20px;
     margin-right: 10px;
 }
 
+.right-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.right-item img {
+    width: 400px;
+    height: 500px;
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+}
+
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.mySlides {
+    display: none;
+}
+
+.mySlides.active {
+    display: block;
+}
+
+.least-post {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.least-post .sub-title1 {
+    align-items: center;
+    text-align: center;
+    font-family: Josefin sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.view-more {
+    text-align: center;
+}
+
+.view-more .button {
+    font-family: Josefin sans-serif;
+    display: inline-block;
+    background-color: rgb(242, 138, 10);
+    color: white;
+    padding: 20px 30px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 23px;
+    margin-top: 20px;
+    border-radius: 20px;
+}
