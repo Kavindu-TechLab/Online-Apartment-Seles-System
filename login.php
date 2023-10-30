@@ -11,7 +11,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style/style.css">
     <link rel="stylesheet" type="text/css" href="style/style_register.css">
-    <title>Register</title>
+    <title>Login</title>
 </head>
 
 <body>
