@@ -163,6 +163,8 @@
 
 .footer-left p {
     font-size: 14px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .footer-left p a {
@@ -172,6 +174,7 @@
 
 .footer-left p a img {
     max-height: 40px;
+    margin-top: 15px;
 }
 
 .footer-right {

@@ -1,5 +1,25 @@
 <?php
 session_start();
+
+include('process_php/db_connection.php');
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST['name'];
+    $rating = $_POST['rating'];
+    $heading = $_POST['heading'];
+    $description = $_POST['description'];
+
+    $sql = "INSERT INTO feedback_web (feedback_rating, feedback_name, feedback_head, feedback_discription) VALUES ('$rating', '$name', '$heading', '$description')";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "Rating submitted successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+
+    $conn->close();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -8,7 +28,7 @@ session_start();
     <title>Home Page</title>
     <link rel="stylesheet" type="text/css" href="style/style.css">
     <link rel="stylesheet" type="text/css" href="style/style_index.css">
-    <link rel="stylesheet" type="text/css" href="style/style_listings.css">
+    <link rel="stylesheet" type="text/css" href="style/style_all_listings.css">
 </head>
 <body>
     <!-- Include the navigation bar -->
@@ -35,7 +55,7 @@ session_start();
         <div class="left-item">
             <div class="sub-title">
                 <img src="images/Arrow1.png" alt="Arrow" class="arrow">
-                <p>SOLUTIONS</p>
+                <p style="color: rgba(84, 61, 33, 1);">SOLUTIONS</p>
             </div>
             <div class="content">
                 <p style="color: rgba(84, 61, 33, 1);">We Assist Buyers</p>
@@ -70,7 +90,16 @@ session_start();
     <div class="least-post">
         <div class="sub-title1">
             <p style="color: rgba(84, 61, 33, 1);">Find Your <span style="color: rgb(242, 138, 10);">Dream</span> <br>Apartment here</p>
-        </div>  
+        </div>
+
+        <div class="search-container">
+            <form action="all_listings.php" method="GET">
+                <div class="search-group">
+                    <input type="text" id="search-input" name="location" placeholder="Search Location...">
+                    <button type="submit" id="search-button"><img src="images/search.png" alt="Search"></button>
+                </div>
+            </form>
+        </div>
         
         <div class="all-listing-container">
             <?php
@@ -135,6 +164,85 @@ session_start();
             <a href="all_listings.php" class="button">View More</a>
         </div>
     </div>
+
+    <div class="bottom_content">
+        <div class="bottom-left-item">
+            <div class="rectangle"></div>
+            <img class="bottom-img1" src="images/bottomimg1.jpg" alt="">
+            <img class="bottom-img2" src="images/bottomimg2.jpg" alt="">
+        </div>
+        <div class="bottom-right-item">
+            <div class="sub-title">
+                <img src="images/Arrow1.png" alt="Arrow" class="arrow">
+                <p style="color: rgba(84, 61, 33, 1);">OUR VALUE</p>
+            </div>
+            <div class="bottom-content">
+                <p style="color: rgba(84, 61, 33, 1);">Unlocking</p>
+                <p style="color: rgba(84, 61, 33, 1);">Real Appraisal</p>
+                <p style="color: rgb(242, 138, 10);">Services.</p>
+                <div class="content-button-section">
+                    <a href="register.php" class="button">Get Start Free</a>
+                    <p style="color: rgba(84, 61, 33, 1);">Our experts can provide valuable insights <br>and assist you in identifying properties.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="why-best">
+        <div class="sub-title1">
+                <p style="color: rgba(84, 61, 33, 1);">Why ApariMint is the <span style="color: rgb(242, 138, 10);"><br>Best?</span></p>
+            </div>
+        </div>
+
+        <div class="why-allbox">
+            <div class="why-box">
+                <h3>1 Million +<br>Property Listings</h3>
+                <img src="images/checklist.png" alt="">
+            </div>
+            <div class="why-box">
+                <h3>1 Million +<br>Active Users</h3>
+                <img src="images/team.png" alt="">
+            </div>
+            <div class="why-box">
+                <h3>26 <br>District Covered</h3>
+                <img src="images/country.png" alt="">
+            </div>
+            <div class="why-box">
+                <h3>1 Million +<br>Seles</h3>
+                <img src="images/sales.png" alt="">
+            </div>
+        </div>
+
+        <div class="add-feedback">
+            <form action="" method="post">
+                <div class="feedback-box1">
+                    <h4>5.0<br>Excellent <br>Add Your Rating</h4>
+                    <div class="star-rating">
+                        <input type="radio" id="star5" name="rating" value="5">
+                        <label for="star5"></label>
+                        <input type="radio" id="star4" name="rating" value="4">
+                        <label for="star4"></label>
+                        <input type="radio" id="star3" name="rating" value="3">
+                        <label for="star3"></label>
+                        <input type="radio" id="star2" name="rating" value="2">
+                        <label for="star2"></label>
+                        <input type="radio" id="star1" name="rating" value="1">
+                        <label for="star1"></label>
+                    </div>
+
+                    <h3 style="background-color:rgba(242, 138, 10); color: #fff;">Out of 5</h3>
+                </div>
+                <div class="feedback-box2">   
+                    <div class="write-review">
+                    <input class="small-input" type="text" name="name" placeholder="Your Name"><br>
+                        <input class="small-input" type="text" name="heading" placeholder="Heading"><br>
+                        <textarea class="discription" name="description" placeholder="Description"></textarea><br>
+                        <input class="button" type="submit" value="Submit Rating">
+                    </div>                        
+                </div>
+            </form>
+        </div>
+
 
     <!-- Include the footer -->
     <?php include('footer.php'); ?>
