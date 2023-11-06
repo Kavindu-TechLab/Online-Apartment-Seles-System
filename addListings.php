@@ -32,7 +32,7 @@ if (!isset($_SESSION["user_id"])) {
 
     <div class="container">
 
-        <form action="process_php/process_listing.php" method="post" enctype="multipart/form-data">
+        <form action="process_php/process_addListing.php" method="post" enctype="multipart/form-data">
                 <div class="form-box">
                     <!-- Main Details -->
                     <div class = "main_details">

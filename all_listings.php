@@ -67,7 +67,7 @@ $result = $conn->query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Listings</title>
     <link rel="stylesheet" type="text/css" href="style/style.css">
-    <link rel="stylesheet" type="text/css" href="style/style_listings.css">
+    <link rel="stylesheet" type="text/css" href="style/style_all_listings.css">
 </head>
 
 <body>
@@ -118,7 +118,7 @@ $result = $conn->query($sql);
         include('process_php/db_connection.php'); 
 
         // Fetch data from the database
-        $sql = "SELECT * FROM listing_details";
+        $sql = "SELECT * FROM listing_details ORDER BY date DESC";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {

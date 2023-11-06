@@ -83,8 +83,8 @@ p {
 }
 
 .top_content {
-    margin-top: 60px;
-    margin-bottom: 60px;
+    margin-top: 100px;
+    margin-bottom: 100px;
     width: 100%;
     align-content: center;
     display: flex;
@@ -107,6 +107,10 @@ p {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+}
+
+.left-item .sub-title img {
+    margin-right: 10px;
 }
 
 .left-item .sub-title p {
@@ -134,6 +138,7 @@ p {
     background-color: rgba(84, 61, 33, 1);
     color: white;
     padding: 15px 25px;
+    max-width: 130px;
     text-align: center;
     text-decoration: none;
     font-size: 23px;
@@ -175,11 +180,11 @@ p {
 }
 
 .least-post {
-    margin-top: 50px;
-    margin-bottom: 50px;
+    padding: 20px 0px;
+    margin-top: 100px;
 }
 
-.least-post .sub-title1 {
+.sub-title1 {
     align-items: center;
     text-align: center;
     font-family: Josefin sans-serif;
@@ -196,10 +201,476 @@ p {
     display: inline-block;
     background-color: rgb(242, 138, 10);
     color: white;
-    padding: 20px 30px;
+    padding: 10px 20px;
     text-align: center;
     text-decoration: none;
     font-size: 23px;
     margin-top: 20px;
     border-radius: 20px;
 }
+
+#search-input {
+    margin-top: 20px;
+    align-items: center;
+    width: 600px;
+}
+
+.bottom_content {
+    margin-top: -50px;
+    margin-bottom: 100px;
+    width: 100%;
+    align-content: center;
+    display: flex;
+}
+
+.bottom-left-item {
+    width: 120%;
+    margin-left: 150px;
+    margin-right: 100px;
+    margin-top: 0px;
+}
+
+.rectangle {
+    position: relative;
+    top: 220px;
+    right: 30px;
+    width: 150px;
+    height: 150px;
+    background-color: rgb(242, 138, 10);
+    z-index: -1;
+}
+
+.bottom-img1 {
+    max-width: 300px;
+    max-height: 200px;
+    border-radius: 20px;
+    margin-right: 30px;
+    margin-bottom: 200px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
+.bottom-img2 {
+    margin-top: 50px;
+    width: 250px;
+    height: 300px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
+.bottom-right-item {
+    margin-top: 180px;
+    width: 100%;
+    align-items: center;
+}
+
+.bottom-right-item p {
+    font-family: Josefin sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.bottom-right-item .sub-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.bottom-right-item .sub-title img {
+    margin-right: 10px;
+}
+
+.bottom-right-item .sub-title p {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-size: 20px;
+    color: black;
+}
+
+.bottom-content .content-button-section {
+    align-items: center;
+    display: grid;
+}
+
+.bottom-content .content-button-section p {
+    font-family: jose-sans-serif;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.bottom-content .content-button-section .button {
+    font-family: Josefin sans-serif;
+    display: inline-block;
+    background-color: rgba(84, 61, 33, 1);
+    color: white;
+    max-width: 130px;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 23px;
+    margin-top: 25px;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+
+.why-best {
+    margin-top: 100px;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.why-allbox {
+    margin-left: 100px;
+    margin-right: 100px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.why-box {
+    margin-top: 0px;
+    margin-bottom: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+    width: 200px;
+    height: 200px;
+    font-family: Josefin sans-serif;
+    color: rgba(84, 61, 33, 1);
+    font-weight: bold;
+    text-align: center;
+    align-items: center;
+    border: 3px solid rgba(242, 138, 10);
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(242, 138, 10);
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
+.why-box img {
+    width: 100px;
+    height: 100px;
+}
+
+
+.add-feedback {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-left: 15%;
+    margin-right: 15%;
+    display: flex;
+}
+
+.feedback-box1 {
+    margin-left: 30px;
+    width: 250px;
+    height: 440px;
+    font-family: Josefin sans-serif;
+    font-size: 40px;
+    color: rgba(242, 138, 10);
+    font-weight: bold;
+    text-align: center;
+    align-items: center;
+    border: 5px solid rgba(242, 138, 10);
+}
+
+.feedback-box2 {
+    padding: 15px;
+    width: 600px;
+    height: 410px;
+    color: rgba(242, 138, 10);
+    text-align: center;
+    border: 5px solid rgba(242, 138, 10);
+}
+
+.add-feedback form {
+    width: 100%;
+    display: flex;
+}
+
+.add-star {
+    width: 100%;
+    margin: 10px;
+    align-self: center;
+}
+
+.star-rating {
+    display: inline-block;
+    transform: rotate(180deg);
+}
+
+.star-rating input[type="radio"] {
+    display: none;
+}
+
+.star-rating label {
+    font-size: 30px;
+    cursor: pointer;
+    color: #ccc;
+}
+
+.star-rating label:before {
+    content: '\2605'; /* Unicode character for a star */
+}
+
+.star-rating input[type="radio"]:checked ~ label {
+    color: rgba(242, 199, 10); /* Color for the selected stars */
+}
+
+.write-review {
+    width: 100%;
+    font-size: 25px;
+    max-width: 100%;
+    margin: 10px;
+}
+
+.write-review .small-input {
+    height: 25px;
+    width: 90%;
+}
+
+.write-review .discription {
+    height: 180px;
+}
+
+input[type="text"], textarea {
+    font-family: Josefin sans-serif;
+    width: 90%;
+    padding: 10px;
+    margin-left: 0;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+input[type="text"]::placeholder, textarea::placeholder {
+    font-family: Josefin sans-serif;
+    font-size: 15px;
+    color: #aaa;
+}
+
+input[type="text"]:focus, textarea:focus {
+    font-family: Josefin sans-serif;
+    font-size: 18px;
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+.write-review .button {
+    font-family: Josefin sans-serif;
+    display: inline-block;
+    background-color: rgb(242, 138, 10);
+    border: rgb(242, 138, 10);
+    color: white;
+    max-width: 180px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    margin-top: 2px;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+
+.add-feedback input[type="text"] {
+    font-family: Josefin sans-serif;
+    padding: 10px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    height: 25px;
+  }
+
+.add-feedback input[type="text"]:focus {
+    border: 3px solid rgba(242, 138, 10);
+    outline: none;
+}
+
+.feedback-view {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    overflow-x: hidden;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    height: auto;
+}
+
+.left-section {
+    font-family: Josefin sans-serif;
+    margin-left: 30px;
+    font-size: 30px;
+    text-align: left;
+    width: 50%;
+    height: auto;
+}
+
+.right-section {
+    overflow-x: hidden;
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: auto;
+}
+
+.customer-feedback-container {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row; 
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+    padding: 10px;
+    white-space: nowrap;
+}
+
+.customer-feedback-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.customer-feedback-container::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+
+.customer-feedback {
+    overflow: hidden;
+    flex: 0 0 auto;
+    width: 270px;
+    height: 320px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border: 2px solid rgba(84, 61, 33, 1);
+    box-shadow: 5px 10px 10px 5px rgba(84, 61, 33, 1);
+    border-radius: 20px;
+    padding: 15px;
+    margin-bottom: 20px;
+    display: inline-block;
+    margin-right: 10px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
+.scroll-left,
+.scroll-right {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 35px;
+    background: rgba(84, 61, 33, 1);
+    color: #fff;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    z-index: 1;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+}
+
+.scroll-left {
+    left: 10px;
+}
+
+.scroll-right {
+    right: 10px;
+}
+
+.customer-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.feed-top-left {
+    margin-left: 10px;
+}
+
+.feed-top-left img {
+    width: 30px;
+    height: 30px;
+}
+
+.customer-photo {
+    width: 50px;
+    height: 50px;
+    background-color: #ccc;
+    margin-right: 10px;
+}
+
+.customer-rating {
+    margin-left: 95px;
+    font-size: 30px;
+    color: #ffcc00;
+}
+
+.customer-description {
+    width: 240px;
+    height: 175px;
+    margin-bottom: 10px;
+    white-space: pre-line;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: bold;
+    text-align: left;
+    color: rgb(242, 138, 10);
+    justify-content: space-between;
+}
+
+.customer-details {
+    display: flex;
+    align-items: center;
+}
+
+.customer-details {
+    align-items: center;
+    display: flex;
+}
+
+.customer-name {
+    display: flex;
+    width: 200px;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    margin-right: 30px;
+    align-items: center;
+    font-weight: bold;
+}
+
+.customer-name img {
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
+}
+
+.customer-date {
+    font-size: 22px;
+    font-weight: bold;
+    color: rgb(242, 138, 10);
+    font-family: Josefin sans-serif;
+    margin-bottom: 5px;
+}
+
+.customer-heading {
+    margin-bottom: 5px;
+    font-size: 22px;
+    font-weight: bold;
+    color: rgba(84, 61, 33, 1);
+    font-family: Josefin sans-serif; 
+}
+

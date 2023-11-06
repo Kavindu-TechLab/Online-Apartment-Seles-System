@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 30, 2023 at 05:56 PM
+-- Generation Time: Nov 06, 2023 at 03:59 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -20,6 +20,30 @@ SET time_zone = "+00:00";
 --
 -- Database: `apartmint`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `feedback_web`
+--
+
+CREATE TABLE `feedback_web` (
+  `feedback_web_id` int(100) NOT NULL,
+  `feedback_rating` int(100) NOT NULL,
+  `feedback_name` varchar(1000) NOT NULL,
+  `feedback_head` varchar(1500) NOT NULL,
+  `feedback_discription` text NOT NULL,
+  `date` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `feedback_web`
+--
+
+INSERT INTO `feedback_web` (`feedback_web_id`, `feedback_rating`, `feedback_name`, `feedback_head`, `feedback_discription`, `date`) VALUES
+(23, 4, 'Kavindu Thennakoon', 'Excellent Experience', 'Nulla facilisi. Integer vestibulum bibendum turpis, nec convallis risus vestibulum id. Fusce eget tempus ex.', '2023-11-05'),
+(24, 5, 'Shasimal Jayarathna', 'Highly Recommend', 'Phasellus et nunc at ligula semper congue. In hac habitasse platea dictumst. Nam euismod viverra ligula nec tincidunt.', '2023-11-05'),
+(25, 2, 'Chathurika Yapa', 'Outstanding Support', 'Curabitur eget orci nec est dapibus dignissim. Mauris pharetra, orci a suscipit cursus, quam mi venenatis elit, vel semper justo dolor ut justo.', '2023-11-05');
 
 -- --------------------------------------------------------
 
@@ -98,6 +122,12 @@ INSERT INTO `users` (`user_id`, `first_name`, `last_name`, `birthdate`, `email`,
 --
 
 --
+-- Indexes for table `feedback_web`
+--
+ALTER TABLE `feedback_web`
+  ADD PRIMARY KEY (`feedback_web_id`);
+
+--
 -- Indexes for table `listing_details`
 --
 ALTER TABLE `listing_details`
@@ -115,10 +145,16 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `feedback_web`
+--
+ALTER TABLE `feedback_web`
+  MODIFY `feedback_web_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
 -- AUTO_INCREMENT for table `listing_details`
 --
 ALTER TABLE `listing_details`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `users`

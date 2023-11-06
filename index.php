@@ -1,6 +1,21 @@
 <?php
 session_start();
+include('process_php/db_connection.php');
+
+// Fetch customer feedback from the database
+$sql = "SELECT * FROM feedback_web ORDER BY date DESC";
+$result = $conn->query($sql);
+
+// Fetch feedback records and store them in an array
+$feedbacks = [];
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        $feedbacks[] = $row;
+    }
+}
+$conn->close();
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -8,7 +23,7 @@ session_start();
     <title>Home Page</title>
     <link rel="stylesheet" type="text/css" href="style/style.css">
     <link rel="stylesheet" type="text/css" href="style/style_index.css">
-    <link rel="stylesheet" type="text/css" href="style/style_listings.css">
+    <link rel="stylesheet" type="text/css" href="style/style_all_listings.css">
 </head>
 <body>
     <!-- Include the navigation bar -->
@@ -35,7 +50,7 @@ session_start();
         <div class="left-item">
             <div class="sub-title">
                 <img src="images/Arrow1.png" alt="Arrow" class="arrow">
-                <p>SOLUTIONS</p>
+                <p style="color: rgba(84, 61, 33, 1);">SOLUTIONS</p>
             </div>
             <div class="content">
                 <p style="color: rgba(84, 61, 33, 1);">We Assist Buyers</p>
@@ -70,7 +85,16 @@ session_start();
     <div class="least-post">
         <div class="sub-title1">
             <p style="color: rgba(84, 61, 33, 1);">Find Your <span style="color: rgb(242, 138, 10);">Dream</span> <br>Apartment here</p>
-        </div>  
+        </div>
+
+        <div class="search-container">
+            <form action="all_listings.php" method="GET">
+                <div class="search-group">
+                    <input type="text" id="search-input" name="location" placeholder="Search Location..." required>
+                    <button type="submit" id="search-button"><img src="images/search.png" alt="Search"></button>
+                </div>
+            </form>
+        </div>
         
         <div class="all-listing-container">
             <?php
@@ -136,6 +160,137 @@ session_start();
         </div>
     </div>
 
+    <div class="bottom_content">
+        <div class="bottom-left-item">
+            <div class="rectangle"></div>
+            <img class="bottom-img1" src="images/bottomimg1.jpg" alt="">
+            <img class="bottom-img2" src="images/bottomimg2.jpg" alt="">
+        </div>
+        <div class="bottom-right-item">
+            <div class="sub-title">
+                <img src="images/Arrow1.png" alt="Arrow" class="arrow">
+                <p style="color: rgba(84, 61, 33, 1);">OUR VALUE</p>
+            </div>
+            <div class="bottom-content">
+                <p style="color: rgba(84, 61, 33, 1);">Unlocking</p>
+                <p style="color: rgba(84, 61, 33, 1);">Real Appraisal</p>
+                <p style="color: rgb(242, 138, 10);">Services.</p>
+                <div class="content-button-section">
+                    <a href="register.php" class="button">Get Start Free</a>
+                    <p style="color: rgba(84, 61, 33, 1);">Our experts can provide valuable insights <br>and assist you in identifying properties.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="why-best">
+        <div class="sub-title1">
+                <p style="color: rgba(84, 61, 33, 1);">Why ApariMint is the <span style="color: rgb(242, 138, 10);"><br>Best?</span></p>
+            </div>
+        </div>
+
+        <div class="why-allbox">
+            <div class="why-box">
+                <h3>1 Million +<br>Property Listings</h3>
+                <img src="images/checklist.png" alt="">
+            </div>
+            <div class="why-box">
+                <h3>1 Million +<br>Active Users</h3>
+                <img src="images/team.png" alt="">
+            </div>
+            <div class="why-box">
+                <h3>26 <br>District Covered</h3>
+                <img src="images/country.png" alt="">
+            </div>
+            <div class="why-box">
+                <h3>1 Million +<br>Seles</h3>
+                <img src="images/sales.png" alt="">
+            </div>
+        </div>
+
+        <div class="feedback-view">
+            <div class="left-section">
+                <h1 style="color: rgba(84, 61, 33, 1);">Our Customers</h1>
+                <h1 style="color: rgba(84, 61, 33, 1);">Think We Are</h1>
+                <h1 style="color: rgb(242, 138, 10);">The Best</h1>   
+            </div>
+            <div class="right-section">
+                <div class="customer-feedback-container">
+                    <?php
+                    foreach ($feedbacks as $feedback) {
+                    ?>
+                        <div class="customer-feedback">
+                            <div class="customer-info">
+                                <div class="feed-top-left">
+                                    <img src="images/language-learning.png" alt="">
+                                </div> 
+                                <div class="customer-rating">
+                                    <!-- Display customer rating stars based on feedback_rating value -->
+                                    <?php
+                                    $rating = $feedback['feedback_rating'];
+                                    echo str_repeat('★', $rating) . str_repeat('☆', 5 - $rating);
+                                    ?>
+                                </div>
+                            </div>
+                            <div class="customer-date">
+                                <?php echo htmlspecialchars($feedback['date']); ?>
+                            </div>
+                            <div class="customer-heading">
+                                <?php echo htmlspecialchars($feedback['feedback_head']); ?>
+                            </div>
+                            <div class="customer-description">
+                                <?php echo htmlspecialchars($feedback['feedback_discription']); ?>
+                            </div>
+                            <div class="customer-details">
+                                <div class="customer-name"><img src="images/user1.png" alt=""><?php echo htmlspecialchars($feedback['feedback_name']); ?></div>
+                                <img src="images/check.png" style="width: 25px; height:25px;">
+                            </div>
+                        </div>
+                    <?php
+                    }
+                    ?>
+                </div>
+                <button class="scroll-left">&lt;</button>
+                <button class="scroll-right">&gt;</button>
+            </div>
+        </div>
+
+        
+        
+        <div class="add-feedback">
+            <form action="process_php/process_feebback.php" method="post">
+                <div class="feedback-box1">
+                    <h4>5.0<br>Excellent <br>Add Your Rating</h4>
+                    <div class="star-rating">
+                        <input type="radio" id="star5" name="rating" value="5" required>
+                        <label for="star5"></label>
+                        <input type="radio" id="star4" name="rating" value="4" required>
+                        <label for="star4"></label>
+                        <input type="radio" id="star3" name="rating" value="3" required>
+                        <label for="star3"></label>
+                        <input type="radio" id="star2" name="rating" value="2" required>
+                        <label for="star2"></label>
+                        <input type="radio" id="star1" name="rating" value="1" required>
+                        <label for="star1"></label>
+                    </div>
+
+                    <h3 style="background-color:rgba(242, 138, 10); color: #fff;">Out of 5</h3>
+                </div>
+                <div class="feedback-box2">   
+                    <div class="write-review">
+                        <input class="small-input" type="text" name="name" placeholder="We'd love to know your name! 😊" required><br>
+                
+                        <input class="small-input" type="text" name="heading" placeholder="Sum up your feedback in a headline!" required><br>
+                        
+                        <textarea class="discription" name="description" placeholder="Your feedback matters! Tell us more in the description." required></textarea><br>
+                        
+                        <input class="button" type="submit" value="Submit Rating">
+                    </div>                        
+                </div>
+            </form>
+        </div>
+
+
     <!-- Include the footer -->
     <?php include('footer.php'); ?>
 
@@ -156,6 +311,15 @@ session_start();
             slides[slideIndex - 1].style.display = "block";
             setTimeout(showSlides, 3000);
         }
+
+        document.querySelector('.scroll-left').addEventListener('click', function() {
+        document.querySelector('.customer-feedback-container').scrollLeft -= 100; 
+        });
+
+        document.querySelector('.scroll-right').addEventListener('click', function() {
+        document.querySelector('.customer-feedback-container').scrollLeft += 100;
+        });
+        
     </script>
 
 </body>
