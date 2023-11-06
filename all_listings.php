@@ -118,7 +118,7 @@ $result = $conn->query($sql);
         include('process_php/db_connection.php'); 
 
         // Fetch data from the database
-        $sql = "SELECT * FROM listing_details";
+        $sql = "SELECT * FROM listing_details ORDER BY date DESC";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {

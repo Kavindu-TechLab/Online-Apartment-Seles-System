@@ -1,26 +1,21 @@
 <?php
 session_start();
-
 include('process_php/db_connection.php');
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = $_POST['name'];
-    $rating = $_POST['rating'];
-    $heading = $_POST['heading'];
-    $description = $_POST['description'];
+// Fetch customer feedback from the database
+$sql = "SELECT * FROM feedback_web ORDER BY date DESC";
+$result = $conn->query($sql);
 
-    $sql = "INSERT INTO feedback_web (feedback_rating, feedback_name, feedback_head, feedback_discription) VALUES ('$rating', '$name', '$heading', '$description')";
-
-    if ($conn->query($sql) === TRUE) {
-        echo "Rating submitted successfully";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+// Fetch feedback records and store them in an array
+$feedbacks = [];
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        $feedbacks[] = $row;
     }
-
-    $conn->close();
 }
-
+$conn->close();
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -95,7 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="search-container">
             <form action="all_listings.php" method="GET">
                 <div class="search-group">
-                    <input type="text" id="search-input" name="location" placeholder="Search Location...">
+                    <input type="text" id="search-input" name="location" placeholder="Search Location..." required>
                     <button type="submit" id="search-button"><img src="images/search.png" alt="Search"></button>
                 </div>
             </form>
@@ -213,20 +208,69 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </div>
 
+        <div class="feedback-view">
+            <div class="left-section">
+                <h1 style="color: rgba(84, 61, 33, 1);">Our Customers</h1>
+                <h1 style="color: rgba(84, 61, 33, 1);">Think We Are</h1>
+                <h1 style="color: rgb(242, 138, 10);">The Best</h1>   
+            </div>
+            <div class="right-section">
+                <div class="customer-feedback-container">
+                    <?php
+                    foreach ($feedbacks as $feedback) {
+                    ?>
+                        <div class="customer-feedback">
+                            <div class="customer-info">
+                                <div class="feed-top-left">
+                                    <img src="images/language-learning.png" alt="">
+                                </div> 
+                                <div class="customer-rating">
+                                    <!-- Display customer rating stars based on feedback_rating value -->
+                                    <?php
+                                    $rating = $feedback['feedback_rating'];
+                                    echo str_repeat('★', $rating) . str_repeat('☆', 5 - $rating);
+                                    ?>
+                                </div>
+                            </div>
+                            <div class="customer-date">
+                                <?php echo htmlspecialchars($feedback['date']); ?>
+                            </div>
+                            <div class="customer-heading">
+                                <?php echo htmlspecialchars($feedback['feedback_head']); ?>
+                            </div>
+                            <div class="customer-description">
+                                <?php echo htmlspecialchars($feedback['feedback_discription']); ?>
+                            </div>
+                            <div class="customer-details">
+                                <div class="customer-name"><img src="images/user1.png" alt=""><?php echo htmlspecialchars($feedback['feedback_name']); ?></div>
+                                <img src="images/check.png" style="width: 25px; height:25px;">
+                            </div>
+                        </div>
+                    <?php
+                    }
+                    ?>
+                </div>
+                <button class="scroll-left">&lt;</button>
+                <button class="scroll-right">&gt;</button>
+            </div>
+        </div>
+
+        
+        
         <div class="add-feedback">
-            <form action="" method="post">
+            <form action="process_php/process_feebback.php" method="post">
                 <div class="feedback-box1">
                     <h4>5.0<br>Excellent <br>Add Your Rating</h4>
                     <div class="star-rating">
-                        <input type="radio" id="star5" name="rating" value="5">
+                        <input type="radio" id="star5" name="rating" value="5" required>
                         <label for="star5"></label>
-                        <input type="radio" id="star4" name="rating" value="4">
+                        <input type="radio" id="star4" name="rating" value="4" required>
                         <label for="star4"></label>
-                        <input type="radio" id="star3" name="rating" value="3">
+                        <input type="radio" id="star3" name="rating" value="3" required>
                         <label for="star3"></label>
-                        <input type="radio" id="star2" name="rating" value="2">
+                        <input type="radio" id="star2" name="rating" value="2" required>
                         <label for="star2"></label>
-                        <input type="radio" id="star1" name="rating" value="1">
+                        <input type="radio" id="star1" name="rating" value="1" required>
                         <label for="star1"></label>
                     </div>
 
@@ -234,9 +278,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
                 <div class="feedback-box2">   
                     <div class="write-review">
-                    <input class="small-input" type="text" name="name" placeholder="Your Name"><br>
-                        <input class="small-input" type="text" name="heading" placeholder="Heading"><br>
-                        <textarea class="discription" name="description" placeholder="Description"></textarea><br>
+                        <input class="small-input" type="text" name="name" placeholder="We'd love to know your name! 😊" required><br>
+                
+                        <input class="small-input" type="text" name="heading" placeholder="Sum up your feedback in a headline!" required><br>
+                        
+                        <textarea class="discription" name="description" placeholder="Your feedback matters! Tell us more in the description." required></textarea><br>
+                        
                         <input class="button" type="submit" value="Submit Rating">
                     </div>                        
                 </div>
@@ -264,6 +311,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             slides[slideIndex - 1].style.display = "block";
             setTimeout(showSlides, 3000);
         }
+
+        document.querySelector('.scroll-left').addEventListener('click', function() {
+        document.querySelector('.customer-feedback-container').scrollLeft -= 100; 
+        });
+
+        document.querySelector('.scroll-right').addEventListener('click', function() {
+        document.querySelector('.customer-feedback-container').scrollLeft += 100;
+        });
+        
     </script>
 
 </body>
