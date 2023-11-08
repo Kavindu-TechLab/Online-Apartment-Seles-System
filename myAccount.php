@@ -7,139 +7,143 @@ if (!isset($_SESSION["user_id"])) {
     header("Location: login.php");
     exit(); // Ensure that code execution stops after the redirect
 }
+
+include('process_php/db_connection.php');
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Retrieve user data from the "users" table based on user_id
+$user_id = $_SESSION["user_id"];
+$sql = "SELECT * FROM users WHERE user_id = $user_id";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $userName = $_SESSION["user_name"];
+    $truncatedName = (strlen($userName) > 21) ? substr($userName, 0, 21) . '...' : $userName;
+    $first_name = $row["first_name"];
+    $last_name = $row["last_name"];
+    $birthdate = $row["birthdate"];
+    $email = $row["email"];
+    $password = $row["password"];
+
+} else {
+    echo "User not found";
+}
+
+$conn->close();
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <style>
-        .container {
-            display: flex;
-            margin: 10px;
-        }
-
-        .left-section {
-            flex: 2;
-            border: 1px solid #543d21;
-            background: #543d21;
-            padding: 10px;
-            border-radius: 10px;
-            text-align: center;
-            width: 30%;
-            font-style: Bold;
-            color: white;
-            
-        }
-
-        .right-section {
-            flex: 10;
-            border: 1px solid #ccc;
-            padding: 10px;
-            border-radius: 10px;
-            width: 70%;
-            font-size: medium;
-        }
-        
-        .round-image {
-            border: 2px solid #ccc;
-            border-radius: 50%;
-        }
-        
-        .button {
-            margin-top: 10px;
-            width: 150px;
-            background-color: #ddd;
-            border: 3px #F28A0A solid;
-            color: black;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            margin: 6px 4px;
-            cursor: pointer;
-            border-radius: 16px;
-            color: #F28A0A;
-            font-size: 15px;
-            font-family: Josefin Sans;
-            font-weight: 700;
-            text-transform: capitalize;
-            line-height: 15px;
-            text-transform: capitalize;
-        }
-        ul{
-            list-style: none;
-            padding: 0;
-        }
-    </style>
+<title>Home Page</title>
+    <link rel="stylesheet" type="text/css" href="style/style_myAccount.css">
 </head>
 <body>
     <div class="container">
         <div class="left-section">
-            <img style="height: 120px; width: 130px; border-radius: 50%;" src="C:\Users\MSii\Pictures\IMG_6523.png" alt="Profile Picture">
-            <p style="font-size: 30px;">John Doe</p>
-            <p>User ID: 12345</p>
-            <ul>
-                <li><button class="button">Home</button></li>
-                <li><button class="button">Personal Details</button></li>
-                <li><button class="button">My Listings</button></li>
-                <li><button class="button">Terms & Conditions</button></li>
-                <li><button class="button">Privercy & Policy</button></li>
+            <img class="profile-photo" src="process_php/uploads/profile_photos/<?php echo $_SESSION["user_profile_photo"]; ?>" alt="Profile Photo">
+            <p class="full-name"><?php echo $truncatedName; ?></p>
+                <ul>
+                <a href="index.php"><li><button class="button">Home</button></li></a>
+                <a href="myAccount.php"><li><button class="button">Personal Details</button></li></a>
+                <a href="myListing.php"><li><button class="button">My Listings</button></li></a>
+                <a href="#"><li><button class="button">Terms & Conditions</button></li></a>
+                <a href="#"><li><button class="button">Privercy & Policy</button></li></a>
+                <a href="process_php/process_logout.php"><li><button class="button">Log Out</button></li></a>
             </ul>
         </div>
         <div class="right-section">
-            <h1 style="color: #F28A0A;">My Account</h1>
+            <a class="logo1" href="index.php"><img src="images/logo.png" alt="Logo"></a>
+            <h1 class="main-title">My Account</h1>
             <hr style="width: 100%; border: 2px #F28A0A solid">
-            <h2>Personal Information</h2>
-            <table style="border-spacing: 20px;">
-                <tr>
-                    <td><label for="first-name">First Name:</label></td>
-                    <td><label for="last-name">Last Name:</label><br></td>
-                </tr>
-                <tr>
-                    <td><input type="text" id="first-name" name="first-name" required></td>
-                    <td><input type="text" id="last-name" name="last-name" required><br></td>
-                </tr>
-                <tr>
-                    <td><label for="phone-number">Phone Number:</label></td>
-                </tr>
-                <tr>
-                    <td><input type="tel" id="phone-number" name="phone-number" required><br></td>
-                </tr>
-                <tr>
-                    <td><label for="address">Address:</label></td>
-                </tr>
-                <tr><td><input type="number" id="address" name="address" required><br></td></tr>
-                <tr><td><input type="text" id="address" name="address" required><br></td></tr>
-                <tr><td><input type="text" id="address" name="address" required><br></td></tr>
-                <tr>
-                    <td><label for="city" name="city">City</label></td>
-                    <td><label for="state" name="state">State</label></td>
-                    <td><label for="postcode" name="postcode">Post Code</label></td>
-                </tr>
-                <tr>
-                    <td><input type="text" id="city" name="city" required><br></td>
-                    <td><input type="text" id="state" name="state" required><br></td>
-                    <td><input type="number" id="postcode" name="postcode" required><br></td>
-                </tr>
-            </table>
-            <button class="button">Submit</button>
-            <h3>Change Email</h3>
-            <table>
-                <tr>
-                    <td><label for="new-email">New Email:</label></td>
-                    <td><input type="email" id="new-email" name="new-email" required><br></td>
-                </tr>
-                <tr>
-                    <td><label for="password">Password:</label></td>
-                    <td><input type="password" id="password" name="password" required><br></td>
-                </tr>
-                <td><button class="button">Submit Changes</button></td>
-            </table>
-            <h2>Account Data</h2>
-            <h style="font-size: 20px;">Deactivate Account</h>
-            <p>By deactivating your account, you will no longer be able to access your account or sign in to Apartments.com.</p>
-            <button class="button">Deactivate Account</button>
+            <h2 class="sub-titles">Personal Information</h2>
+            <form method="post" action="process_php/update_user.php">
+                <div class="name-field">
+                    <label for="first-name">First Name:</label>
+                    <input type="text" id="first-name" name="first-name" value="<?php echo $first_name; ?>" required><br>
+
+                    <label for="last-name">Last Name:</label>
+                    <input type="text" id="last-name" name="last-name" value="<?php echo $last_name; ?>" required><br>
+
+                    <label for="birthdate">Birth Date:</label>
+                    <input type="date" id="birthdate" name="birthdate" value="<?php echo $birthdate; ?>" required>
+                    <?php
+                    // Check for password update success or error messages
+                    if (isset($_SESSION["profile_update_success"])) {
+                        echo "<p class='update-success'>Email updated successfully!</p>";
+                        unset($_SESSION["profile_update_success"]);
+                    } elseif (isset($_SESSION["profile_update_error"])) {
+                        echo "<p class='update-error'>" . $_SESSION["profile_update_error"] . "</p>";
+                        unset($_SESSION["profile_update_error"]);
+                    }
+                    ?>
+                </div>  
+                <button style="margin-bottom: 25px" class="button1" type="submit">Update</button>
+            </form>
+
+            <form method="post" action="process_php/update_user.php" enctype="multipart/form-data">
+                <label for="profile-photo">Profile Photo:</label>
+                <input style="margin-bottom: 10px" type="file" id="profile-photo" name="profile-photo"><br>
+                <?php
+                    // Check for password update success or error messages
+                    if (isset($_SESSION["photo_update_success"])) {
+                        echo "<p class='update-success'>Profile photo updated successfully!</p>";
+                        unset($_SESSION["photo_update_success"]);
+                    } elseif (isset($_SESSION["photo_update_error"])) {
+                        echo "<p class='update-error'>" . $_SESSION["photo_update_error"] . "</p>";
+                        unset($_SESSION["photo_update_error"]);
+                    }
+                    ?>
+                <button class="button1" type="submit">Update Profile Photo</button>
+            </form>
+
+            <h2 class="sub-titles">Login & Security</h2>
+            <form method="post" action="process_php/update_user.php">
+                <label for="new-email">New Email:</label>
+                <input type="email" id="new-email" name="new-email" value="<?php echo $email; ?>" required><br>
+                <?php
+                    // Check for password update success or error messages
+                    if (isset($_SESSION["email_update_success"])) {
+                        echo "<p class='update-success'>Email updated successfully!</p>";
+                        unset($_SESSION["email_update_success"]);
+                    } elseif (isset($_SESSION["email_update_error"])) {
+                        echo "<p class='update-error'>" . $_SESSION["email_update_error"] . "</p>";
+                        unset($_SESSION["email_update_error"]);
+                    }
+                ?>
+                <button class="button1" type="submit">Change Email</button><br>
+            </form>
+
+            <form method="post" action="process_php/update_user.php">
+                <label for="password">Old Password:</label>
+                <input type="password" id="password" name="password" required><br>
+                <label for="password">New Password:</label>
+                <input type="password" id="newpassword" name="newpassword" required><br>
+                <?php
+                    // Check for password update success or error messages
+                    if (isset($_SESSION["password_update_success"])) {
+                        echo "<p class='update-success'>Password updated successfully!</p>";
+                        unset($_SESSION["password_update_success"]);
+                    } elseif (isset($_SESSION["password_update_error"])) {
+                        echo "<p class='update-error'>" . $_SESSION["password_update_error"] . "</p>";
+                        unset($_SESSION["password_update_error"]);
+                    }
+                ?>
+                <button class="button1" type="submit">Change Password</button>
+            </form>
+
+            <form method="post" action="process_php/deactivate_account.php">
+                <h2 class="sub-titles">Account Data</h2>
+                <label>Deactivate Account</label>
+                <p>By deactivating your account, you will no longer be able to access your account or sign in to Apartments.com.</p>
+                <button class="button1" type="submit" name="deactivate-account" value="Deactivate Account">Deactivate Account</button>
+            </form>
         </div>
     </div>
 </body>
 </html>
+

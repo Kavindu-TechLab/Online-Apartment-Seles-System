@@ -12,7 +12,7 @@
                 // If logged in, show user's name and profile photo with dropdown menu
                 echo '<li class="dropdown">';
                 $userName = $_SESSION["user_name"];
-                $truncatedName = strlen($userName) > 15 ? substr($userName, 0, 15) . '...' : $userName;
+                $truncatedName = (strlen($userName) > 15) ? substr($userName, 0, 15) . '...' : $userName;
                 echo '<span class="dropbtn"><img class="profile_photo" src="process_php/uploads/profile_photos/' . $_SESSION["user_profile_photo"] . '" alt="Profile Photo">' . $truncatedName . '</span>';
                 echo '<div class="dropdown-content">';
                 echo '<a href="myAccount.php">My Account</a>';
