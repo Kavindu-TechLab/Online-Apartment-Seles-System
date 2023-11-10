@@ -39,7 +39,7 @@ $conn->close();
 <!DOCTYPE html>
 <html>
 <head>
-<title>Home Page</title>
+<title>My Account</title>
     <link rel="stylesheet" type="text/css" href="style/style_myAccount.css">
 </head>
 <body>
@@ -50,7 +50,7 @@ $conn->close();
                 <ul>
                 <a href="index.php"><li><button class="button">Home</button></li></a>
                 <a href="myAccount.php"><li><button class="button">Personal Details</button></li></a>
-                <a href="myListing.php"><li><button class="button">My Listings</button></li></a>
+                <a href="myAccount_listings.php"><li><button class="button">My Listings</button></li></a>
                 <a href="#"><li><button class="button">Terms & Conditions</button></li></a>
                 <a href="#"><li><button class="button">Privercy & Policy</button></li></a>
                 <a href="process_php/process_logout.php"><li><button class="button">Log Out</button></li></a>

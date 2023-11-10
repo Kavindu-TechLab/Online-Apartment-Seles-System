@@ -150,36 +150,26 @@ select {
 
 }
 
-.submit input {
-    margin-top: 10px;
-    margin-bottom: 50px;
-    padding: 20px;
-    width: 100px;
-    padding: 10px;
-    border: 3px solid rgba(242, 138, 10, 1);
-    border-radius: 40px;
-    outline: none;
-    box-sizing: border-box;
+.container .submit-button {
+    text-align: right;
+    margin-right: 80px;
+}
+
+.container .button1 {
+    margin-bottom: 25px;
+    background-color: #F28A0A;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    cursor: pointer;
     font-size: 16px;
-    font-family: Arial, sans-serif;
-    align-self: flex-end;
-
-}
-
-input[type="submit"] {
-    align-self: flex-end;
-    margin-top: 10px; /* Optional: Add some space between the form elements and the button */
-}
-
-#publish {
-    background-color: rgba(242, 138, 10, 1);
-    color: #fff;
-    grid-column: span 3;
-}
-
-#save {
-    background-color: #fff;
-    color: rgba(242, 138, 10, 1);
+    transition: background-color 0.3s ease;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
 }
 
 

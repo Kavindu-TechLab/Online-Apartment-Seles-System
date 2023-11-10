@@ -1,11 +1,9 @@
 <?php
-
 session_start();
-
 include('db_connection.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
+    $listingId = $_GET['id'];
     $user_id = $_SESSION["user_id"];
     $listingType = $_POST["listingType"];
     $title = $_POST["title"];
@@ -22,17 +20,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $lastName = $_POST["lastName"];
     $email = $_POST["email"];
     $phone = $_POST["phone"];
-    
+
     $features = isset($_POST["features"]) ? implode(", ", $_POST["features"]) : "";
     $kitchens = isset($_POST["kitchens"]) ? implode(", ", $_POST["kitchens"]) : "";
     $outdoorSpaces = isset($_POST["outdoor_spaces"]) ? implode(", ", $_POST["outdoor_spaces"]) : "";
     $livingSpaces = isset($_POST["living_spaces"]) ? implode(", ", $_POST["living_spaces"]) : "";
     $utilities = isset($_POST["utilities"]) ? implode(", ", $_POST["utilities"]) : "";
 
+    // Check if files were uploaded
     $uploadedImages = array();
     $targetDirectory = "uploads/listings_photoes/";
 
-    // Check if files were uploaded
     if(isset($_FILES['image']) && !empty($_FILES['image']['name'][0])) {
         foreach ($_FILES['image']['tmp_name'] as $key => $tmp_name) {
             $temp = $_FILES['image']['tmp_name'][$key];
@@ -41,25 +39,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             move_uploaded_file($temp, $target);
             $uploadedImages[] = $target;
         }
-        
+
         // Convert the array of uploaded image paths to a comma-separated string
         $imagePaths = implode(",", $uploadedImages);
     } else {
-        // No images were uploaded, handle this case accordingly
-        $imagePaths = "";
+        // No new images were uploaded, keep existing images
+        $existingImages = $_POST['existingImages'];
+        $imagePaths = $existingImages;
     }
 
-    // Insert data into the database
-    $sql = "INSERT INTO listing_details (user_id, listing_type, title, property_type, address, city, total_units, bedrooms, bathrooms, price, size, features, kitchen, outdoor_spaces, living_spaces, utilities, li_image, description, f_name, l_name, email, p_no)
-            VALUES ('$user_id', '$listingType', '$title', '$propertyType', '$address', '$city', '$totalUnits', '$bedrooms', '$bathrooms', '$price', '$size', '$features', '$kitchens', '$outdoorSpaces', '$livingSpaces', '$utilities', '$imagePaths', '$description', '$firstName', '$lastName', '$email', '$phone')";
+    // Update data in the database
+    $sql = "UPDATE listing_details 
+            SET listing_type='$listingType', title='$title', property_type='$propertyType', address='$address', city='$city', 
+            total_units='$totalUnits', bedrooms='$bedrooms', bathrooms='$bathrooms', price='$price', size='$size', 
+            features='$features', kitchen='$kitchens', outdoor_spaces='$outdoorSpaces', living_spaces='$livingSpaces', 
+            utilities='$utilities', li_image='$imagePaths', description='$description', f_name='$firstName', l_name='$lastName', 
+            email='$email', p_no='$phone' 
+            WHERE id='$listingId' AND user_id='$user_id'";
 
     if ($conn->query($sql) === TRUE) {
-        echo "New record created successfully";
+        echo "Record updated successfully";
+        // Redirect to the updated listing page or any other page as needed
+        header("Location: ../listing_view.php?id=$listingId");
+        exit();
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error updating record: " . $conn->error;
     }
 
     $conn->close();
 }
 ?>
+
 

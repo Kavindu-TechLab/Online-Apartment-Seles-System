@@ -144,3 +144,36 @@ label {
     transition: background-color 0.3s ease;
     text-align: center;
 }
+
+.property-buttons-container {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.edit-button, .delete-button {
+    margin: 0;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.edit-button {
+    width: 100%;
+    background-color: #4caf50; 
+}
+
+.delete-button {
+    width:100%;
+    background-color: #f44336;
+}
+
+.edit-button:hover, .delete-button:hover {
+    background-color: #333;
+}
+
