@@ -2,7 +2,6 @@
 session_start();
 include('process_php/db_connection.php');
 
-// Fetch customer feedback from the database
 $sql = "SELECT * FROM feedback_web ORDER BY date DESC";
 $result = $conn->query($sql);
 

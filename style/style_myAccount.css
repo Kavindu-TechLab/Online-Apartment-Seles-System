@@ -1,0 +1,179 @@
+body {
+    font-family: Josefin sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+}
+
+.container {
+    display: flex;
+}
+
+.logo1 img{
+    max-width: 150px;
+    max-height: auto;
+    margin-left: 43%;
+    margin-right: 43%;
+    margin-bottom: 5px;
+}
+
+.main-title {
+    color: rgba(242, 138, 10);
+    font-size: 45px;
+    font-weight: bold;
+}
+
+.left-section {
+    flex: 2.5;
+    border: 1px solid #543d21;
+    background: #543d21;
+    padding: 10px;
+    text-align: center;
+    width: 30%;
+    font-style: Bold;
+    color: white;
+    
+}
+
+.button {
+    width: 150px;
+    background-color: #fff;
+    color: rgba(242, 138, 10);
+    border: 3px solid rgba(242, 138, 10);
+    padding: 10px 20px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+.profile-photo {
+    height: 120px; 
+    width: 130px; 
+    border-radius: 50%;
+}
+
+.full-name {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.round-image {
+    border: 2px solid #ccc;
+    border-radius: 50%;
+}
+
+.right-section {
+    flex: 10;
+    border: 1px solid #ccc;
+    padding: 2% 7%;
+    width: 70%;
+}
+
+.sub-titles {
+    color: rgba(84, 61, 33, 1);
+    background-color: #aaaaaa7a;
+    padding: 10px;
+    margin-bottom: 25px;
+    margin-top: 25px;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="email"],
+input[type="password"] {
+    width: 50%;
+    margin-bottom: 10px;
+    font-family: Josefin sans-serif;
+    padding: 5px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 25px;
+    height: 20px;
+    color: rgba(84, 61, 33, 1);
+  }
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border: 3px solid rgba(242, 138, 10);
+    outline: none;
+}
+
+label {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.update-success {
+    color: green;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.update-error {
+    color: red;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.name-field {
+    font-family: Josefin sans-serif;
+}
+
+.button1 {
+    background-color: #F28A0A;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+.property-buttons-container {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.edit-button, .delete-button {
+    margin: 0;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.edit-button {
+    width: 100%;
+    background-color: #4caf50; 
+}
+
+.delete-button {
+    width:100%;
+    background-color: #f44336;
+}
+
+.edit-button:hover, .delete-button:hover {
+    background-color: #333;
+}
+

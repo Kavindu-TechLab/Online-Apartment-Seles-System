@@ -17,8 +17,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Password is correct, create session variables and redirect to dashboard or home page
             $_SESSION["user_id"] = $row["user_id"];
             $_SESSION["user_email"] = $row["email"];
-            $_SESSION["user_name"] = $row["first_name"]; // Assuming the user's name is stored in the 'first_name' column
-            $_SESSION["user_profile_photo"] = $row["profile_photo"]; // Assuming the profile photo file name is stored in the 'profile_photo' column
+            $_SESSION["user_name"] = $row["first_name"] . " " . $row["last_name"];
+            $_SESSION["user_profile_photo"] = $row["profile_photo"];
             header("Location: ../index.php");
         } else {
             // Incorrect password, redirect back to the login page with an error message
