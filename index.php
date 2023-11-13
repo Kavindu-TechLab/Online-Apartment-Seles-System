@@ -99,7 +99,7 @@ $conn->close();
             <?php
             include('process_php/db_connection.php'); 
 
-            $sql = "SELECT * FROM listing_details ORDER BY date DESC LIMIT 4";
+            $sql = "SELECT * FROM listing_details WHERE approval_status = 'Approved' ORDER BY date DESC";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
