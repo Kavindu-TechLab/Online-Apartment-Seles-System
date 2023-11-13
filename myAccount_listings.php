@@ -88,7 +88,7 @@ $conn->close();
                             $imagePaths = explode(',', $row['li_image']);
                             // Get the first image path, you can modify this logic based on your requirements
                             $firstImagePath = isset($imagePaths[0]) ? $imagePaths[0] : '';
-                            echo'<div style="height: 550px;" class="listing">';
+                            echo'<div class="listing">';
                                 echo '<div class="listing-photo">';
                                     if (!empty($firstImagePath)) {
                                         echo '<div><img src="process_php/' . $firstImagePath . '" alt="Listing Photo"></div>';

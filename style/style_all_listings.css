@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: Josefin sans-serif;
 }
 
 .search-container{
@@ -19,6 +19,8 @@ body {
 }
 
 input[type="text"] {
+    font-family: Josefin sans-serif;
+    color: #858282;
     padding: 10px;
     font-size: 18px;
     border: 1px solid #ccc;
@@ -39,6 +41,7 @@ input[type="text"]:focus {
     padding: 4px 9px;
     border-radius: 5px;
     cursor: pointer;
+    margin-bottom: 10px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     -ms-border-radius: 5px;
@@ -58,6 +61,8 @@ input[type="text"]:focus {
 }
 
 .filter-group input[type="number"] {
+    font-family: Josefin sans-serif;
+    color: #858282;
     padding: 10px;
     font-size: 18px;
     border: 1px solid #ccc;
@@ -74,11 +79,13 @@ input[type="text"]:focus {
 
 .filter-group select {
     width: 100%;
-    padding: 14px;
+    padding: 12px;
     border: 1px solid #ccc;
     border-radius: 5px;
     outline: none;
-    font-size: 16px;
+    font-size: 18px;
+    font-family: Josefin sans-serif;
+    color: #838282;
     margin-right: 10px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -143,7 +150,7 @@ a {
 .listing {
     margin: 10px;
     width: 300px;
-    height: 505px;
+    height: auto;
     border: 3px solid rgba(84, 61, 33, 1);
     font-size: 15px;
     font-weight: bold;

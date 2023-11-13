@@ -32,11 +32,11 @@ if(isset($_GET['maxPrice'])) {
 }
 
 // Construct the SQL query based on filters
-$sql = "SELECT * FROM listing_details WHERE 1";
+$sql = "SELECT * FROM listing_details WHERE approval_status = 'Approved'";
 
 if(!empty($location)) {
     $searchLocation = strtolower($location);
-    $sql .= " AND (LOWER(city) LIKE '%$searchLocation%' OR UPPER(city) LIKE '%$searchLocation%')";
+    $sql .= " AND (LOWER(city) LIKE '%$searchLocation%')";
 }
 
 if(!empty($listingType)) {
@@ -101,24 +101,25 @@ $result = $conn->query($sql);
         </form>
     </div>
 
-    <!-- Display total properties found after search or filter -->
+    <!-- Display total properties found -->
     <?php
-    echo '<div class="noOfProperty">';
-        if ($result->num_rows > 0) {
-            $propertyCount = $result->num_rows;
-            echo '<div>Showing ' . $propertyCount . ' Properties</div>';
-        } else {
-            echo '<div>No properties found</div>';
-        }
-    echo '</div>';
+        echo '<div class="noOfProperty">';
+            if ($result->num_rows > 0) {
+                $propertyCount = $result->num_rows;
+                echo '<div>Showing ' . $propertyCount . ' Properties</div>';
+            } else {
+                echo '<div>No properties found</div>';
+            }
+        echo '</div>';
     ?>
+
 
     <div class="all-listing-container">
         <?php
         include('process_php/db_connection.php'); 
 
         // Fetch data from the database
-        $sql = "SELECT * FROM listing_details ORDER BY date DESC";
+        $sql = "SELECT * FROM listing_details WHERE approval_status = 'Approved' ORDER BY date DESC";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {

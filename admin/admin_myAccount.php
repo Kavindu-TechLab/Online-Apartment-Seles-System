@@ -1,28 +1,27 @@
 <?php
 session_start();
 
-// Check if the user is not logged in
-if (!isset($_SESSION["user_id"])) {
-    // Redirect to the login page
-    header("Location: login.php");
-    exit(); // Ensure that code execution stops after the redirect
+if (!isset($_SESSION['admin_id'])) {
+    header("Location: admin_login.php");
+    exit();
 }
 
-include('process_php/db_connection.php');
+// Include your database connection file
+include('../process_php/db_connection.php');
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Retrieve user data from the "users" table based on user_id
-$user_id = $_SESSION["user_id"];
-$sql = "SELECT * FROM users WHERE user_id = $user_id";
+// Retrieve admin data from the "admins" table based on admin_id
+$admin_id = $_SESSION["admin_id"];
+$sql = "SELECT * FROM admins WHERE admin_id = $admin_id";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
-    $userName = $_SESSION["user_name"];
-    $truncatedName = (strlen($userName) > 21) ? substr($userName, 0, 21) . '...' : $userName;
+    $adminName = $_SESSION["admin_name"];
+    $truncatedName = (strlen($adminName) > 21) ? substr($adminName, 0, 21) . '...' : $adminName;
     $first_name = $row["first_name"];
     $last_name = $row["last_name"];
     $birthdate = $row["birthdate"];
@@ -30,40 +29,40 @@ if ($result->num_rows > 0) {
     $password = $row["password"];
 
 } else {
-    echo "User not found";
+    echo "admin not found";
 }
 
 $conn->close();
+
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Account</title>
-    <link rel="stylesheet" type="text/css" href="style/style_myAccount.css">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="../style/style_myAccount.css">
 </head>
 <body>
-    <div class="container">
+<div class="container">
         <div class="left-section">
-            <img class="profile-photo" src="process_php/uploads/profile_photos/<?php echo $_SESSION["user_profile_photo"]; ?>" alt="Profile Photo">
+            <img class="profile-photo" src="process_php/uploads/profile_photos/<?php echo $_SESSION["admin_profile_photo"]; ?>" alt="Profile Photo">
             <p class="full-name"><?php echo $truncatedName; ?></p>
                 <ul>
-                <a href="index.php"><li><button class="button">Home</button></li></a>
-                <a href="myAccount.php"><li><button class="button">Personal Details</button></li></a>
-                <a href="myAccount_listings.php"><li><button class="button">My Listings</button></li></a>
-                <a href="#"><li><button class="button">Terms & Conditions</button></li></a>
-                <a href="#"><li><button class="button">Privercy & Policy</button></li></a>
+                <a href="admin_dashboard.php"><li><button class="button">Dashboard</button></li></a>
+                <a href="admin_myAccount.php"><li><button class="button">My Account</button></li></a>
+                <a href="view_pendingListings.php"><li><button class="button">Pending Listings</button></li></a>
+                <a href="admin_register.php"><li><button class="button">Register</button></li></a>
                 <a href="process_php/process_logout.php"><li><button class="button">Log Out</button></li></a>
             </ul>
         </div>
         <div class="right-section">
-            <a class="logo1" href="index.php"><img src="images/logo.png" alt="Logo"></a>
+            <a class="logo1" href="admin_dashboard.php"><img src="../images/logo.png" alt="Logo"></a>
             <h1 class="main-title">My Account</h1>
             <hr style="width: 100%; border: 2px #F28A0A solid">
             <h2 class="sub-titles">Personal Information</h2>
-            <form method="post" action="process_php/update_user.php">
+            <form method="post" action="process_php/update_admin.php">
                 <div class="name-field">
                     <label for="first-name">First Name:</label>
                     <input type="text" id="first-name" name="first-name" value="<?php echo $first_name; ?>" required><br>
@@ -87,7 +86,7 @@ $conn->close();
                 <button style="margin-bottom: 25px" class="button1" type="submit">Update</button>
             </form>
 
-            <form method="post" action="process_php/update_user.php" enctype="multipart/form-data">
+            <form method="post" action="process_php/update_admin.php" enctype="multipart/form-data">
                 <label for="profile-photo">Profile Photo:</label>
                 <input style="margin-bottom: 10px" type="file" id="profile-photo" name="profile-photo"><br>
                 <?php
@@ -104,7 +103,7 @@ $conn->close();
             </form>
 
             <h2 class="sub-titles">Login & Security</h2>
-            <form method="post" action="process_php/update_user.php">
+            <form method="post" action="process_php/update_admin.php">
                 <label for="new-email">New Email:</label>
                 <input type="email" id="new-email" name="new-email" value="<?php echo $email; ?>" required><br>
                 <?php
@@ -120,7 +119,7 @@ $conn->close();
                 <button class="button1" type="submit">Change Email</button><br>
             </form>
 
-            <form method="post" action="process_php/update_user.php">
+            <form method="post" action="process_php/update_admin.php">
                 <label for="password">Old Password:</label>
                 <input type="password" id="password" name="password" required><br>
                 <label for="password">New Password:</label>
@@ -137,15 +136,7 @@ $conn->close();
                 ?>
                 <button class="button1" type="submit">Change Password</button>
             </form>
-
-            <form method="post" action="process_php/deactivate_account.php">
-                <h2 class="sub-titles">Account Data</h2>
-                <label>Deactivate Account</label>
-                <p>By deactivating your account, you will no longer be able to access your account or sign in to Apartments.com.</p>
-                <button class="button1" type="submit" name="deactivate-account" value="Deactivate Account">Deactivate Account</button>
-            </form>
         </div>
     </div>
 </body>
 </html>
-

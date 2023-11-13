@@ -21,6 +21,8 @@ body {
     color: rgba(242, 138, 10);
     font-size: 45px;
     font-weight: bold;
+    margin-bottom: 0;
+    padding: 0;
 }
 
 .left-section {
@@ -151,29 +153,102 @@ label {
     justify-content: space-between;
 }
 
-.edit-button, .delete-button {
-    margin: 0;
+.delete-button {
+    width: 100%;
     padding: 8px 16px;
-    border: none;
-    cursor: pointer;
+    background-color: #f70606;
     color: #fff;
-    text-align: center;
     text-decoration: none;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
+    text-align: center;
+    border: none;
+    border-radius: 4px;
+    margin-bottom: 2px;
+    transition: background-color 0.3s;
+    -webkit-transition: background-color 0.3s;
+    -moz-transition: background-color 0.3s;
+    -ms-transition: background-color 0.3s;
+    -o-transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+    background-color: rgb(253, 253, 252);
+    border: 2px solid #f70606;
+    color: #f70606;
 }
 
 .edit-button {
     width: 100%;
-    background-color: #4caf50; 
+    padding: 8px 16px;
+    background-color: #4caf50;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 4px;
+    border: none;
+    margin-bottom: 2px;
+    transition: background-color 0.3s;
+    -webkit-transition: background-color 0.3s;
+    -moz-transition: background-color 0.3s;
+    -ms-transition: background-color 0.3s;
+    -o-transition: background-color 0.3s;
 }
 
-.delete-button {
-    width:100%;
-    background-color: #f44336;
+.edit-button:hover {
+    background-color: rgb(253, 253, 252);
+    border: 2px solid #4caf50;
+    color: #4caf50;
 }
 
-.edit-button:hover, .delete-button:hover {
-    background-color: #333;
+.admin-dashboard {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
 }
 
+.admin-dashboard .dashboard-box {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    justify-content: space-around;
+    text-align: center;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 25px;
+    width: 200px;
+}
+
+.admin-dashboard .box-number {
+    font-size: 28px;
+    font-weight: bold;
+    color: rgba(84, 61, 33, 1);
+}
+
+.admin-dashboard .box-title {
+    margin-top: 10px;
+    font-size: 20px;
+    color: rgba(84, 61, 33, 1);
+}
+
+.admin-dashboard .box-button a {
+    width: 90px;
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: rgba(242, 138, 10);
+    border: 2px solid rgba(242, 138, 10);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    -webkit-transition: background-color 0.3s;
+    -moz-transition: background-color 0.3s;
+    -ms-transition: background-color 0.3s;
+    -o-transition: background-color 0.3s;
+}
+
+.admin-dashboard .box-button a:hover {
+    background-color: #fff;
+    color: rgba(242, 138, 10);
+    border: 2px solid rgba(242, 138, 10);
+}
