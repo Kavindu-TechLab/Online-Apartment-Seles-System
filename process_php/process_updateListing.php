@@ -48,9 +48,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $imagePaths = $existingImages;
     }
 
-    // Update data in the database
+    // Update data in the database and set approval_status to 'Pending'
     $sql = "UPDATE listing_details 
-            SET listing_type='$listingType', title='$title', property_type='$propertyType', address='$address', city='$city', 
+            SET approval_status='Pending', listing_type='$listingType', title='$title', property_type='$propertyType', address='$address', city='$city', 
             total_units='$totalUnits', bedrooms='$bedrooms', bathrooms='$bathrooms', price='$price', size='$size', 
             features='$features', kitchen='$kitchens', outdoor_spaces='$outdoorSpaces', living_spaces='$livingSpaces', 
             utilities='$utilities', li_image='$imagePaths', description='$description', f_name='$firstName', l_name='$lastName', 
@@ -58,9 +58,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             WHERE id='$listingId' AND user_id='$user_id'";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Record updated successfully";
         // Redirect to the updated listing page or any other page as needed
-        header("Location: ../listing_view.php?id=$listingId");
+        header("Location: ../wait_approve.php");
         exit();
     } else {
         echo "Error updating record: " . $conn->error;
@@ -69,5 +68,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn->close();
 }
 ?>
-
-

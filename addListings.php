@@ -257,7 +257,6 @@ if (!isset($_SESSION["user_id"])) {
                     </div>
                 </div>
                 <div class="submit-button">
-                    <button class="button1" type="submit">Save</button>
                     <button class="button1" type="submit">Publish</button>
                 </div>
             </form>

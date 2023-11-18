@@ -313,7 +313,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])) {
                 </div>
             </div>
             <div class="submit-button">
-                <button class="button1" type="submit">Update Listings</button>
+                <button class="button1" type="submit">Update & Publish Listings</button>
             </div>
             
         </form>
