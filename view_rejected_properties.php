@@ -52,28 +52,25 @@ $conn->close();
         <div class="left-section">
             <img class="profile-photo" src="process_php/uploads/profile_photos/<?php echo $_SESSION["user_profile_photo"]; ?>" alt="Profile Photo">
             <p class="full-name"><?php echo $truncatedName; ?></p>
-                <ul>
+            <ul>
                 <a href="index.php"><li><button class="button">Home</button></li></a>
+                <a href="user_dashboard.php"><li><button class="button">Dashboard</button></li></a>
                 <a href="myAccount.php"><li><button class="button">Personal Details</button></li></a>
-                <a href="myListing.php"><li><button class="button">My Listings</button></li></a>
-                <a href="#"><li><button class="button">Terms & Conditions</button></li></a>
-                <a href="#"><li><button class="button">Privercy & Policy</button></li></a>
-                <a href="process_php/process_logout.php"><li><button class="button">Log Out</button></li></a>
+                <a href="process_php/process_logout.php"><li><button style="margin-bottom: 400px;" class="button">Log Out</button></li></a>
             </ul>
         </div>
         <div style="padding:20px;" class="right-section">
             <a class="logo1" href="index.php"><img src="images/logo.png" alt="Logo"></a>
-            <h1 class="main-title">My Listings</h1>
+            <h1 class="main-title">Rejected Listings</h1>
             <hr style="width: 100%; border: 2px #F28A0A solid">
-            <h2 class="sub-titles">Publish Listings</h2>
 
             <div class="all-listing-container">
                 <?php
                 include('process_php/db_connection.php'); 
 
-                // Fetch data from the database for the logged-in user
+                // Fetch data from the database for the logged-in user with approval_status = 'Approved'
                 $user_id = $_SESSION["user_id"];
-                $sql = "SELECT * FROM listing_details WHERE user_id = $user_id ORDER BY date DESC";
+                $sql = "SELECT * FROM listing_details WHERE user_id = $user_id AND approval_status = 'Rejected' ORDER BY date DESC";
                 $result = $conn->query($sql);
             
 
@@ -114,7 +111,7 @@ $conn->close();
                                         echo '<div class="publisher-icon"><img src="images/user.png" alt="Publisher">BY : ' . $row['f_name'] . '</div>';
                                     echo '</div>';
                                     echo '<div class="property-buttons-container">';
-                                    echo '<a href="myAccount_updateListing.php?id=' . $row['id'] . '" class="edit-button">Edit</a>';
+                                    echo '<a href="user_updateListing.php?id=' . $row['id'] . '" class="edit-button">Edit</a>';
                                     echo '<a href="process_php/delete_listing.php?id=' . $row['id'] . '" class="delete-button">Delete</a>';
                                 echo '</div>';
                                 echo '</div>';
@@ -131,12 +128,7 @@ $conn->close();
                 $conn->close();
                 ?>
             </div>
-
-            <h2 class="sub-titles">Pending Approved Listings</h2>
-
-
         </div>
     </div>
 </body>
 </html>
-

@@ -11,6 +11,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT); // Hash the password for security
     $profilePhoto = $_FILES["profilePhoto"]["name"]; // Retrieve the profile photo file name
 
+    if ($password != $confirmPassword) {
+        $_SESSION["register_error"] = "Password and confirm password do not match";
+        header("Location: ../admin_register.php"); // Redirect back to the registration page
+        exit();
+    }
+
     // Upload profile photo to the server
     $targetDirectory = "uploads/profile_photos/";
     $targetFilePath = $targetDirectory . basename($profilePhoto);

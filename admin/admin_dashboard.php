@@ -131,14 +131,14 @@ $conn->close();
 
             <div class="admin-dashboard">
                 <div>
-                    <!-- Box 3: Number of Pending Properties -->
+                    <!-- Box 1: Number of Pending Properties -->
                     <div class="dashboard-box">
                         <div class="box-number"><?php echo $pendingCount; ?></div>
                         <div class="box-title">Properties Pending</div>
                         <div class="box-button"><a href="view_pendingListings.php">View</a></div>
                     </div>
 
-                    <!-- Box 1: Number of Users Registered -->
+                    <!-- Box 2: Number of Users Registered -->
                     <div class="dashboard-box">
                         <div class="box-number"><?php echo $userCount; ?></div>
                         <div class="box-title">Users Registered</div>
@@ -147,14 +147,14 @@ $conn->close();
 
                 </div>
                 <div>
-                    <!-- Box 2: Number of Approved Properties -->
+                    <!-- Box 3: Number of Approved Properties -->
                     <div class="dashboard-box">
                         <div class="box-number"><?php echo $approvedCount; ?></div>
                         <div class="box-title">Properties Approved</div>
                         <div class="box-button"><a href="view_approved_properties.php">View</a></div>
                     </div>
 
-                    <!-- Box 1: Number of Admins Registered -->
+                    <!-- Box 4: Number of Admins Registered -->
                     <div class="dashboard-box">
                         <div class="box-number"><?php echo $adminCount; ?></div>
                         <div class="box-title">Admins Registered</div>
@@ -163,14 +163,14 @@ $conn->close();
                     
                 </div>
                 <div>
-                    <!-- Box 4: Number of Rejected Properties -->
+                    <!-- Box 5: Number of Rejected Properties -->
                     <div class="dashboard-box">
                         <div class="box-number"><?php echo $rejectedCount; ?></div>
                         <div class="box-title">Properties Rejected</div>
                         <div class="box-button"><a href="view_rejected_properties.php">View</a></div>
                     </div>
 
-                    <!-- Box 4: Number of Feedbacks Recived -->
+                    <!-- Box 6: Number of Feedbacks Recived -->
                     <div class="dashboard-box">
                         <div class="box-number"><?php echo $feedbackCount; ?></div>
                         <div class="box-title">Feedbacks Received</div>

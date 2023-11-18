@@ -39,13 +39,6 @@ if ($result->num_rows > 0) {
     echo "admin not found";
 }
 
-// Retrieve search parameter if provided
-$searchTerm = isset($_GET['user']) ? $_GET['user'] : '';
-
-// Convert the search term to lowercase
-$searchTermLower = strtolower($searchTerm);
-
-
 $conn->close();
 ?>
 
@@ -107,9 +100,17 @@ $conn->close();
                         <label for="profilePhoto">Profile Photo</label>
                         <input type="file" id="profilePhoto" name="profilePhoto" accept="image/*">
                     </div>
+
+                    <!-- Display error message here -->
+                    <?php
+                    if (isset($_SESSION["register_error"])) {
+                        echo '<div class="error-message"><br>' . $_SESSION["register_error"] . '</div>';
+                        unset($_SESSION["register_error"]); // Remove the session variable after displaying the message
+                    }
+                    ?>
+
                     <button type="submit" class="button1">Register</button>
                 </form>
-        </div>
             </div>
         </div>
     </body>

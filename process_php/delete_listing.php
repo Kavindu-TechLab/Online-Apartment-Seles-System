@@ -28,7 +28,7 @@ if (isset($_GET['id'])) {
         $delete_sql = "DELETE FROM listing_details WHERE id = $listing_id";
         if ($conn->query($delete_sql) === TRUE) {
             // Deletion successful, redirect to myListing.php
-            header("Location: ../myAccount_listings.php");
+            header("Location: ../user_dashboard.php");
             exit();
         } else {
             echo "Error deleting listing: " . $conn->error;

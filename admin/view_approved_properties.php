@@ -29,14 +29,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-// Initialize variables for filters
-$location = '';
-$listingType = '';
-$bedrooms = '';
-$propertyType = '';
-$minPrice = '';
-$maxPrice = '';
-
 // Retrieve admin data from the "admins" table based on admin_id
 $admin_id = $_SESSION["admin_id"];
 $sql = "SELECT * FROM admins WHERE admin_id = $admin_id";

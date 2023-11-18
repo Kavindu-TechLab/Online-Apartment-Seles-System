@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             VALUES ('$user_id', '$listingType', '$title', '$propertyType', '$address', '$city', '$totalUnits', '$bedrooms', '$bathrooms', '$price', '$size', '$features', '$kitchens', '$outdoorSpaces', '$livingSpaces', '$utilities', '$imagePaths', '$description', '$firstName', '$lastName', '$email', '$phone')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "New record created successfully";
+        header("Location: ../wait_approve.php");
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }

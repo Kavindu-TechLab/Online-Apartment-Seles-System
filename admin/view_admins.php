@@ -114,10 +114,19 @@ $conn->close();
                                 <div class="box-data"><?php echo $truncatedName; ?></div>
                                 <div class="box-data"><?php echo $row['email']; ?></div>
                                 <div class="box-data">Birthdate: <?php echo $row['birthdate']; ?></div>
-                                <form action="process_php/delete_admin.php" method="post">
-                                    <input type="hidden" name="admin_id" value="<?php echo $row['admin_id']; ?>">
-                                    <button type="submit" class="delete-button">Delete</button>
-                                </form>
+                                <?php
+                                // Check if the admin_id is 2
+                                if ($row['admin_id'] == 2) {
+                                    // Hide the delete button
+                                    echo '<div style="color:red;" class="reminder">Reminder: You cannot delete this admin.</div>';
+                                } else {
+                                    // Show the delete button
+                                    echo '<form action="process_php/delete_admin.php" method="post">';
+                                    echo '<input type="hidden" name="admin_id" value="' . $row['admin_id'] . '">';
+                                    echo '<button type="submit" class="delete-button">Delete</button>';
+                                    echo '</form>';
+                                }
+                                ?>
                             </div>
                         </div>
                     <?php
