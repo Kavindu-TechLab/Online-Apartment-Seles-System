@@ -70,6 +70,14 @@ $conn->close();
                 <a href="admin_register.php"><h1 class="main-title">Admin Registraion</h1></a>
                 <hr style="width: 100%; border: 2px #F28A0A solid">
 
+                <!-- Display error message if set in the session -->
+                <?php
+                    if (isset($_SESSION["error_message"])) {
+                        echo '<div class="error-message">' . $_SESSION["error_message"] . '</div>';
+                        unset($_SESSION["error_message"]); // Clear the error message from session
+                    }
+                ?>
+
                 <!-- Registration Form -->
                 <form style="padding: 30px" action="process_php/admin_registration.php" method="post" enctype="multipart/form-data">
                     <div class="form-row">
@@ -100,15 +108,6 @@ $conn->close();
                         <label for="profilePhoto">Profile Photo</label>
                         <input type="file" id="profilePhoto" name="profilePhoto" accept="image/*">
                     </div>
-
-                    <!-- Display error message here -->
-                    <?php
-                    if (isset($_SESSION["register_error"])) {
-                        echo '<div class="error-message"><br>' . $_SESSION["register_error"] . '</div>';
-                        unset($_SESSION["register_error"]); // Remove the session variable after displaying the message
-                    }
-                    ?>
-
                     <button type="submit" class="button1">Register</button>
                 </form>
             </div>

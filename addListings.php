@@ -39,32 +39,32 @@ if (!isset($_SESSION["user_id"])) {
                         <h2>Main Details</h2>
                         <div class="form-column1">
                             <label for="title">Title</label>
-                            <input type="text" id="title" name="title">
+                            <input type="text" id="title" name="title" required>
                             <label for="listingType">Listing Type</label>
-                            <select id="listingType" name="listingType">
+                            <select id="listingType" name="listingType" required>
                                 <option value="Sale">Sale</option>
                                 <option value="Rent">Rent</option>
                             </select>
                             <label for="propertyType">What type of property is it?</label>
-                            <select id="propertyType" name="propertyType">
+                            <select id="propertyType" name="propertyType" required>
                                 <option value="Single Family Home">Single Family Home</option>
                                 <option value="Single Room">Single Room</option>
                                 <option value="Apartment">Apartment</option>
                             </select>
                             <label for="address">Address</label>
-                            <input type="text" id="address" name="address">
+                            <input type="text" id="address" name="address" required>
                             <label for="city">City</label>
-                            <input type="text" id="city" name="city">
+                            <input type="text" id="city" name="city" required>
                             <label for="totalUnits">Total number of units</label>
-                            <input type="number" id="totalUnits" name="totalUnits">
+                            <input type="number" id="totalUnits" name="totalUnits" required>
                             <label for="bedrooms">Number of Bedrooms</label>
-                            <input type="number" id="bedrooms" name="bedrooms">
+                            <input type="number" id="bedrooms" name="bedrooms" required>
                             <label for="bathrooms">Number of Bathrooms</label>
-                            <input type="number" id="bathrooms" name="bathrooms">
+                            <input type="number" id="bathrooms" name="bathrooms" required>
                             <label for="price">Price</label>
-                            <input type="number" id="price" name="price">
+                            <input type="number" id="price" name="price" required>
                             <label for="size">Size</label>
-                            <input type="number" id="size" name="size">
+                            <input type="number" id="size" name="size" required>
                         </div>
                     </div>
                 </div>
@@ -215,13 +215,13 @@ if (!isset($_SESSION["user_id"])) {
                         <h2>Media</h2>
                         <div class="form-column1">
                             <label for="image">Upload Images</label>
-                            <input type="file" id="image" name="image[]" accept="image/*" multiple>
-                            <input type="file" id="image" name="image[]" accept="image/*" multiple>
-                            <input type="file" id="image" name="image[]" accept="image/*" multiple>
-                            <input type="file" id="image" name="image[]" accept="image/*" multiple>
-                            <input type="file" id="image" name="image[]" accept="image/*" multiple>
-                            <input type="file" id="image" name="image[]" accept="image/*" multiple>
-                            <input type="file" id="image" name="image[]" accept="image/*" multiple>
+                            <input type="file" id="image" name="image[]" accept="image/*" multiple required>
+                            <input type="file" id="image" name="image[]" accept="image/*" multiple required>
+                            <input type="file" id="image" name="image[]" accept="image/*" multiple required>
+                            <input type="file" id="image" name="image[]" accept="image/*" multiple required>
+                            <input type="file" id="image" name="image[]" accept="image/*" multiple required>
+                            <input type="file" id="image" name="image[]" accept="image/*" multiple required>
+                            <input type="file" id="image" name="image[]" accept="image/*" multiple required>
                         </div>
                     </div>
                 </div>
@@ -232,7 +232,7 @@ if (!isset($_SESSION["user_id"])) {
                     <div class = "description">
 
                         <h2>Description</h2>
-                        <textarea id="description" name="description"></textarea>
+                        <textarea id="description" name="description" required></textarea>
 
                     </div>
                 </div>
@@ -243,16 +243,16 @@ if (!isset($_SESSION["user_id"])) {
                         <h2>Contact Information</h2>
                         <div class="form-column1">
                             <label for="firstName">First Name</label>
-                            <input type="text" id="firstName" name="firstName">
+                            <input type="text" id="firstName" name="firstName" required>
 
                             <label for="lastName">Last Name</label>
-                            <input type="text" id="lastName" name="lastName">
+                            <input type="text" id="lastName" name="lastName" required>
 
                             <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email">
+                            <input type="email" id="email" name="email" required>
 
                             <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone">
+                            <input type="tel" id="phone" name="phone" required>
                         </div>
                     </div>
                 </div>

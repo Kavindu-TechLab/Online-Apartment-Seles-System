@@ -36,6 +36,14 @@ session_start();
             <h1>Welcome To Apartmint......!</h1>
             <p>Join the Minty Side of Apartment Hunting with ApartMint.</p>
 
+            <!-- Display error message if set in the session -->
+            <?php
+                if (isset($_SESSION["error_message"])) {
+                    echo '<div class="error-message">' . $_SESSION["error_message"] . '</div>';
+                    unset($_SESSION["error_message"]); // Clear the error message from session
+                }
+            ?>
+
             <!-- Registration Form -->
             <form action="process_php/process_registration.php" method="post" enctype="multipart/form-data">
                 <div class="form-row">

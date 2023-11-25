@@ -21,26 +21,26 @@
             </div>
             <div class="column">
                 <h2>Features</h2>
-                <p>Home</p>
-                <p>Sign Up</p>
-                <p>Login</p>
-                <p>Property Listings</p>
-                <p>Property Search</p>
+                <a href="index.php"><p>Home</p></a>
+                <a href="register.php"><p>Sign Up</p></a>
+                <a href="login.php"><p>Login</p></a>
+                <a href="all_listings.php"><p>Property Listings</p></a>
+                <a href="addListings.php"><p>Add Listings</p></a>
             </div>
             <div class="column">
                 <h2>Company</h2>
-                <p>About Us</p>
-                <p>Blog</p>
-                <p>Careers</p>
-                <p>Customers</p>
-                <p>Brand</p>
+                <a href="#"><p>About Us</p></a>
+                <a href="#"><p>Blog</p></a>
+                <a href="#"><p>Careers</p></a>
+                <a href="#"><p>Customers</p></a>
+                <a href="#"><p>Brand</p></a>
             </div>
             <div class="column">
                 <h2>Resources</h2>
-                <p>Community</p>
-                <p>Contract</p>
-                <p>DPA</p>
-                <p>Term of Services</p>
+                <a href="#"><p>Community</p></a>
+                <a href="#"><p>Contract</p></a>
+                <a href="#"><p>DPA</p></a>
+                <a href="#"><p>Term of Services</p></a>
             </div>
         </div>
     </div>
