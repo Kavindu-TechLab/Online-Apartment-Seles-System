@@ -548,7 +548,7 @@ input[type="text"]:focus, textarea:focus {
     overflow: hidden;
     flex: 0 0 auto;
     width: 270px;
-    height: 320px;
+    height: auto;
     margin-left: 20px;
     margin-right: 20px;
     border: 2px solid rgba(84, 61, 33, 1);
@@ -619,16 +619,28 @@ input[type="text"]:focus, textarea:focus {
 }
 
 .customer-description {
-    width: 240px;
+    width: 250px;
     height: 175px;
+    overflow-y: auto;
     margin-bottom: 10px;
     white-space: pre-line;
-    overflow: hidden;
-    text-overflow: ellipsis;
     font-weight: bold;
     text-align: left;
     color: rgb(242, 138, 10);
     justify-content: space-between;
+}
+
+.customer-description::-webkit-scrollbar {
+    width: 3px; /* Adjust scrollbar width as needed */
+}
+
+.customer-description::-webkit-scrollbar-thumb {
+    background-color: rgb(242, 138, 10); /* Scrollbar thumb color */
+    border-radius: 5px;
+}
+
+.customer-description::-webkit-scrollbar-track {
+    background-color: #fff; /* Scrollbar track color */
 }
 
 .customer-details {
@@ -667,10 +679,12 @@ input[type="text"]:focus, textarea:focus {
 }
 
 .customer-heading {
-    margin-bottom: 5px;
+    width: 260px;
+    margin-bottom: 10px;
     font-size: 22px;
     font-weight: bold;
     color: rgba(84, 61, 33, 1);
     font-family: Josefin sans-serif; 
 }
+
 

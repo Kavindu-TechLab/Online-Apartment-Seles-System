@@ -234,9 +234,13 @@ $conn->close();
                             <div class="customer-date">
                                 <?php echo htmlspecialchars($feedback['date']); ?>
                             </div>
-                            <div class="customer-heading">
-                                <?php echo htmlspecialchars($feedback['feedback_head']); ?>
+                            <div class="customer-heading" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                                <?php
+                                $feedbackHead = htmlspecialchars($feedback['feedback_head']);
+                                echo $feedbackHead;
+                                ?>
                             </div>
+
                             <div class="customer-description">
                                 <?php echo htmlspecialchars($feedback['feedback_discription']); ?>
                             </div>
@@ -292,7 +296,7 @@ $conn->close();
 
     <!-- Include the footer -->
     <?php include('footer.php'); ?>
-
+    
     <script>
         var slideIndex = 0;
         showSlides();
@@ -323,3 +327,4 @@ $conn->close();
 
 </body>
 </html>
+

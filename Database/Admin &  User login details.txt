@@ -1,0 +1,13 @@
+Admin login details:
+
+admin@gmail.com
+1234
+
+
+User login details:
+
+user1@gmail.com
+0000
+
+user2@gmail.com
+0000

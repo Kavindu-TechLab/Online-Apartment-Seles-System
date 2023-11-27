@@ -185,6 +185,10 @@
     margin-top: 20px;
 }
 
+.footer-right a p {
+    color: white;
+}
+
 .column {
     flex: 1;
     max-width: calc(25% - 20px);
@@ -220,6 +224,15 @@ hr {
     font-size: 14px;
 }
 
+a {
+    text-decoration: none;
+}
+
 .footer-bottom a {
+    text-decoration: none;
     color: #FFF;
+}
+
+.footer-bottom a:hover {
+    color: #000;
 }

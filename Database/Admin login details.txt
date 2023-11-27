@@ -1,4 +1,0 @@
-Admin login details:
-
-admin@gmail.com
-1234

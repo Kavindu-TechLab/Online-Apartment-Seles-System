@@ -121,8 +121,8 @@ $conn->close();
                 <p class="full-name"><?php echo $truncatedName; ?></p>
                     <ul>
                     <a href="admin_dashboard.php"><li><button class="button">Dashboard</button></li></a>
-                    <a href="admin_myAccount.php"><li><button class="button">My Account</button></li></a>
-                    <a href="admin_pendingListings.php"><li><button class="button">Pending Listings</button></li></a>
+                    <a href="admin_myAccount.php"><li><button class="button">Personal Details</button></li></a>
+                    <a href="view_pendingListings.php"><li><button class="button">Pending Listings</button></li></a>
                     <a href="admin_register.php"><li><button class="button">Register</button></li></a>
                     <a href="process_php/process_logout.php"><li><button class="button">Log Out</button></li></a>
                 </ul>
@@ -134,7 +134,7 @@ $conn->close();
 
                 <div class="search-container">
                     <form action="view_approved_properties.php" method="GET">
-                        <div class="search-group">
+                        <div style="width: 100%;" class="search-group">
                             <input type="text" id="search-input" name="location" placeholder="Search Location...">
                             <button type="submit" id="search-button"><img src="../images/search.png" alt="Search"></button>
                         </div>
@@ -167,7 +167,7 @@ $conn->close();
                     if ($result->num_rows > 0) {
                         echo '<div class="listing-container">';
                         while($row = $result->fetch_assoc()) {
-                            echo '<a href="admin_listing_view.php?id=' . $row['id'] . '" class="property-link">';
+                            echo '<a href="user_listing_view.php?id=' . $row['id'] . '" class="property-link">';
 
                             if (
                                 (strpos($row['city'], $location) !== false || empty($location)) &&

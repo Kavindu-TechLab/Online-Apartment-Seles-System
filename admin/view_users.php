@@ -78,7 +78,7 @@ $conn->close();
                 <p class="full-name"><?php echo $truncatedName; ?></p>
                 <ul>
                     <a href="admin_dashboard.php"><li><button class="button">Dashboard</button></li></a>
-                    <a href="admin_myAccount.php"><li><button class="button">My Account</button></li></a>
+                    <a href="admin_myAccount.php"><li><button class="button">Personal Details</button></li></a>
                     <a href="admin_pendingListings.php"><li><button class="button">Pending Listings</button></li></a>
                     <a href="admin_register.php"><li><button class="button">Register</button></li></a>
                     <a href="process_php/process_logout.php"><li><button class="button">Log Out</button></li></a>
@@ -104,7 +104,7 @@ $conn->close();
                     // Display each approved user in a separate box
                     while ($row = $resultApprovedUsers->fetch_assoc()) {
                         $fullName = $row['first_name'] . ' ' . $row['last_name'];
-                        $truncatedName = (strlen($fullName) > 15) ? substr($fullName, 0, 15) . '...' : $fullName;
+                        $truncatedName = (strlen($fullName) > 25) ? substr($fullName, 0, 25) . '...' : $fullName;
                     ?>
                             <div class="user-details">
                                 <div style="text-align: center;"> 
@@ -113,6 +113,10 @@ $conn->close();
                                 <div class="box-data"><?php echo $truncatedName; ?></div>
                                 <div class="box-data"><?php echo $row['email']; ?></div>
                                 <div class="box-data">Birthdate: <?php echo $row['birthdate']; ?></div>
+                                <form action="view_user_listings.php" method="get">
+                                    <input type="hidden" name="user_id" value="<?php echo $row['user_id']; ?>">
+                                    <button type="submit" class="user-listings-button">User Listings</button>
+                                </form>
                                 <form action="process_php/delete_user.php" method="post">
                                     <input type="hidden" name="user_id" value="<?php echo $row['user_id']; ?>">
                                     <button type="submit" class="delete-button">Delete</button>

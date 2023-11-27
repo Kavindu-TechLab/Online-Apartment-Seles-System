@@ -59,8 +59,8 @@ $conn->close();
                 <p class="full-name"><?php echo $truncatedName; ?></p>
                 <ul>
                     <a href="admin_dashboard.php"><li><button class="button">Dashboard</button></li></a>
-                    <a href="admin_myAccount.php"><li><button class="button">My Account</button></li></a>
-                    <a href="admin_pendingListings.php"><li><button class="button">Pending Listings</button></li></a>
+                    <a href="admin_myAccount.php"><li><button class="button">Personal Details</button></li></a>
+                    <a href="view_pendingListings.php"><li><button class="button">Pending Listings</button></li></a>
                     <a href="admin_register.php"><li><button class="button">Register</button></li></a>
                     <a href="process_php/process_logout.php"><li><button class="button">Log Out</button></li></a>
                 </ul>
@@ -69,6 +69,18 @@ $conn->close();
                 <a class="logo1" href="admin_dashboard.php"><img src="../images/logo.png" alt="Logo"></a>
                 <a href="admin_register.php"><h1 class="main-title">Admin Registraion</h1></a>
                 <hr style="width: 100%; border: 2px #F28A0A solid">
+
+                <!-- Display error message if set in the session -->
+                <?php
+                    if (isset($_SESSION["error_message"])) {
+                        echo '<div class="error-message">' . $_SESSION["error_message"] . '</div>';
+                        unset($_SESSION["error_message"]); // Clear the error message from session
+                    }
+                    if (isset($_SESSION["successful_message"])) {
+                        echo '<div style="color: green;" class="error-message">' . $_SESSION["successful_message"] . '</div>';
+                        unset($_SESSION["successful_message"]); // Clear the error message from session
+                    }
+                ?>
 
                 <!-- Registration Form -->
                 <form style="padding: 30px" action="process_php/admin_registration.php" method="post" enctype="multipart/form-data">
@@ -100,15 +112,6 @@ $conn->close();
                         <label for="profilePhoto">Profile Photo</label>
                         <input type="file" id="profilePhoto" name="profilePhoto" accept="image/*">
                     </div>
-
-                    <!-- Display error message here -->
-                    <?php
-                    if (isset($_SESSION["register_error"])) {
-                        echo '<div class="error-message"><br>' . $_SESSION["register_error"] . '</div>';
-                        unset($_SESSION["register_error"]); // Remove the session variable after displaying the message
-                    }
-                    ?>
-
                     <button type="submit" class="button1">Register</button>
                 </form>
             </div>
