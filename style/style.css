@@ -224,6 +224,15 @@ hr {
     font-size: 14px;
 }
 
+a {
+    text-decoration: none;
+}
+
 .footer-bottom a {
+    text-decoration: none;
     color: #FFF;
+}
+
+.footer-bottom a:hover {
+    color: #000;
 }

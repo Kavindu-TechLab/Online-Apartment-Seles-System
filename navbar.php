@@ -15,7 +15,7 @@
                 $truncatedName = (strlen($userName) > 15) ? substr($userName, 0, 15) . '...' : $userName;
                 echo '<span class="dropbtn"><img class="profile_photo" src="process_php/uploads/profile_photos/' . $_SESSION["user_profile_photo"] . '" alt="Profile Photo">' . $truncatedName . '</span>';
                 echo '<div class="dropdown-content">';
-                echo '<a href="user_dashboard.php">My Account</a>';
+                echo '<a href="user_dashboard.php">Dashboard</a>';
                 echo '<a href="process_php/process_logout.php">Logout</a>';
                 echo '</div>';
                 echo '</li>';

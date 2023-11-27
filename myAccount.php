@@ -49,13 +49,12 @@ $conn->close();
         <div class="left-section">
             <img class="profile-photo" src="process_php/uploads/profile_photos/<?php echo $_SESSION["user_profile_photo"]; ?>" alt="Profile Photo">
             <p class="full-name"><?php echo $truncatedName; ?></p>
-                <ul>
+            <ul>
                 <a href="index.php"><li><button class="button">Home</button></li></a>
+                <a href="user_dashboard.php"><li><button class="button">Dashboard</button></li></a>
                 <a href="myAccount.php"><li><button class="button">Personal Details</button></li></a>
-                <a href="myAccount_listings.php"><li><button class="button">My Listings</button></li></a>
-                <a href="#"><li><button class="button">Terms & Conditions</button></li></a>
-                <a href="#"><li><button class="button">Privercy & Policy</button></li></a>
-                <a href="process_php/process_logout.php"><li><button class="button">Log Out</button></li></a>
+                <a href="process_php/process_logout.php"><li><button style="margin-bottom: 400px;" class="button">Log Out</button></li></a>
+            </ul>
             </ul>
         </div>
         <div class="right-section">

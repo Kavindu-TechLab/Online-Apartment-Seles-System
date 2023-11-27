@@ -76,6 +76,10 @@ $conn->close();
                         echo '<div class="error-message">' . $_SESSION["error_message"] . '</div>';
                         unset($_SESSION["error_message"]); // Clear the error message from session
                     }
+                    if (isset($_SESSION["successful_message"])) {
+                        echo '<div style="color: green;" class="error-message">' . $_SESSION["successful_message"] . '</div>';
+                        unset($_SESSION["successful_message"]); // Clear the error message from session
+                    }
                 ?>
 
                 <!-- Registration Form -->

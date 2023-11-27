@@ -134,7 +134,7 @@ $conn->close();
 
                 <div class="search-container">
                     <form action="view_approved_properties.php" method="GET">
-                        <div class="search-group">
+                        <div style="width: 100%;" class="search-group">
                             <input type="text" id="search-input" name="location" placeholder="Search Location...">
                             <button type="submit" id="search-button"><img src="../images/search.png" alt="Search"></button>
                         </div>

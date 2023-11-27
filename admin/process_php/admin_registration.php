@@ -42,6 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         VALUES ('$firstName', '$lastName', '$birthdate', '$email', '$hashedPassword', '$profilePhoto')";
 
         if ($conn->query($sql) === TRUE) {
+            $_SESSION["successful_message"] = "Your Registration successful!!!!!";
             header("Location: ../admin_register.php");
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
