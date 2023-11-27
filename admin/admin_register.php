@@ -59,8 +59,8 @@ $conn->close();
                 <p class="full-name"><?php echo $truncatedName; ?></p>
                 <ul>
                     <a href="admin_dashboard.php"><li><button class="button">Dashboard</button></li></a>
-                    <a href="admin_myAccount.php"><li><button class="button">My Account</button></li></a>
-                    <a href="admin_pendingListings.php"><li><button class="button">Pending Listings</button></li></a>
+                    <a href="admin_myAccount.php"><li><button class="button">Personal Details</button></li></a>
+                    <a href="view_pendingListings.php"><li><button class="button">Pending Listings</button></li></a>
                     <a href="admin_register.php"><li><button class="button">Register</button></li></a>
                     <a href="process_php/process_logout.php"><li><button class="button">Log Out</button></li></a>
                 </ul>

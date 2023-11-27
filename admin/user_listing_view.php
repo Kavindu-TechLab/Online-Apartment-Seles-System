@@ -303,15 +303,6 @@ if (isset($_GET['id'])) {
                     </div>
                 </div>
             </div>
-            <div class="approve_reject">
-                <!-- Add these buttons after the existing HTML content in your form -->
-                <form action="process_php/approve_reject_listing.php" method="post">
-                        <input type="hidden" name="listing_id" value="<?php echo $listingId; ?>">
-                        <button style="background-color: green;" type="submit" name="action" value="approve">Approve</button>
-                        <button style="background-color: red;" type="submit" name="action" value="reject">Reject</button>
-                </form>
-            </div>
-
         </body>
 
     </html>

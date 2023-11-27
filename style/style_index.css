@@ -548,7 +548,7 @@ input[type="text"]:focus, textarea:focus {
     overflow: hidden;
     flex: 0 0 auto;
     width: 270px;
-    height: 320px;
+    height: auto;
     margin-left: 20px;
     margin-right: 20px;
     border: 2px solid rgba(84, 61, 33, 1);

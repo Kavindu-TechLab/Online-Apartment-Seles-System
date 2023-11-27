@@ -102,6 +102,26 @@ input[type="text"]:focus {
     color: #f70606;
 }
 
+.user-listings-button {
+    width: 100%;
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: rgba(242, 138, 10, 1);
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+    margin-bottom: 2px;
+}
+
+.user-listings-button:hover {
+    background-color: rgb(253, 253, 252);
+    border: 2px solid rgba(242, 138, 10, 1);
+    color: rgba(242, 138, 10, 1);
+}
+
 .customer-feedback-container {
     margin-top: 30px;
     display: flex;
@@ -113,7 +133,7 @@ input[type="text"]:focus {
     overflow: hidden;
     margin-left: 10px;
     width: 270px;
-    height: 370px;
+    height: auto;
     border: 2px solid rgba(84, 61, 33, 1);
     border-radius: 20px;
     padding: 5px;
@@ -153,12 +173,24 @@ input[type="text"]:focus {
     height: 175px;
     margin-bottom: 10px;
     white-space: pre-line;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    overflow-y: auto;
     font-weight: bold;
     text-align: left;
     color: rgb(242, 138, 10);
     justify-content: space-between;
+}
+
+.customer-description::-webkit-scrollbar {
+    width: 3px; /* Adjust scrollbar width as needed */
+}
+
+.customer-description::-webkit-scrollbar-thumb {
+    background-color: rgb(242, 138, 10); /* Scrollbar thumb color */
+    border-radius: 5px;
+}
+
+.customer-description::-webkit-scrollbar-track {
+    background-color: #fff; /* Scrollbar track color */
 }
 
 .customer-details {

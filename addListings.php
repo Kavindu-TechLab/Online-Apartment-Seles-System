@@ -55,7 +55,7 @@ if (!isset($_SESSION["user_id"])) {
                             <input type="text" id="address" name="address" required>
                             <label for="city">City</label>
                             <input type="text" id="city" name="city" required>
-                            <label for="totalUnits">Total number of units</label>
+                            <label for="totalUnits">Total number of floors</label>
                             <input type="number" id="totalUnits" name="totalUnits" required>
                             <label for="bedrooms">Number of Bedrooms</label>
                             <input type="number" id="bedrooms" name="bedrooms" required>
@@ -244,12 +244,12 @@ if (!isset($_SESSION["user_id"])) {
                         <div class="form-column1">
                             <label for="firstName">First Name</label>
                             <input type="text" id="firstName" name="firstName" required>
+                            
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
 
                             <label for="lastName">Last Name</label>
                             <input type="text" id="lastName" name="lastName" required>
-
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required>
 
                             <label for="phone">Phone Number</label>
                             <input type="tel" id="phone" name="phone" required>
