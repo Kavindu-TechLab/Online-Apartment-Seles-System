@@ -1,4 +1,12 @@
 <?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+// Load Composer's autoloader
+require __DIR__ . '/vendor/autoload.php';
+
 session_start();
 include('db_connection.php');
 
@@ -24,30 +32,56 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($result->num_rows > 0) {
         // Email already registered, set an error message
-        $_SESSION["error_message"] = "Your Registration unsuccessful. Email is already registered.";
+        $_SESSION["error_message"] = "Your Registration was unsuccessful. Email is already registered.";
 
         // Redirect back to the registration page with an error
         header("Location: ../register.php");
         exit();
     } elseif ($password != $confirmPassword) {
         // Passwords do not match, set an error message
-        $_SESSION["error_message"] = "Your Registration unsuccessful. Password and confirm password do not match.";
+        $_SESSION["error_message"] = "Your Registration was unsuccessful. Password and confirm password do not match.";
 
         // Redirect back to the registration page with an error
         header("Location: ../register.php");
         exit();
     } else {
-        // Insert data into the database
-        $sql = "INSERT INTO users (first_name, last_name, birthdate, email, password, profile_photo)
-        VALUES ('$firstName', '$lastName', '$birthdate', '$email', '$hashedPassword', '$profilePhoto')";
+        // Insert data into the database with email verification status as false
+        $verificationToken = md5(uniqid(rand(), true));
+        $sql = "INSERT INTO users (first_name, last_name, birthdate, email, password, profile_photo, email_verified, verification_token)
+        VALUES ('$firstName', '$lastName', '$birthdate', '$email', '$hashedPassword', '$profilePhoto', FALSE, '$verificationToken')";
 
         if ($conn->query($sql) === TRUE) {
-            header("Location: ../registration_successful.php");
+            // Send email verification link
+            $verificationLink = "http://localhost/Online-Apartment-Seles-System/process_php/verify_email.php?email=$email&token=$verificationToken";
+
+            // Send email verification link using PHPMailer
+            $mail = new PHPMailer(true);
+
+            try {
+                $mail->isSMTP();
+                $mail->Host = 'smtp.gmail.com';
+                $mail->SMTPAuth = true;
+                $mail->Username = "apartmintproperty@gmail.com";
+                $mail->Password = 'uxlw qqzt xpox bccc';
+                $mail->SMTPSecure = 'tls';
+                $mail->Port = 587;
+
+                $mail->setFrom('apartmintproperty@gmail.com', 'Apartmint');
+                $mail->addAddress($email);
+
+                $mail->isHTML(true);
+                $mail->Subject = 'Email Verification - ApartMint';
+                $mail->Body = "Click on the link below to verify your email:<br><a href='$verificationLink'>$verificationLink</a>";
+
+                $mail->send();
+                header("Location: ../registration_successful.php");
+            } catch (Exception $e) {
+                echo "Error sending email. Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            }
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
     }
-
 } else {
     // If the form is not submitted, redirect back to the registration page
     header("Location: ../register.php");
