@@ -11,10 +11,10 @@ if (isset($_GET['email']) && isset($_GET['token'])) {
 
     if ($conn->query($sql) === TRUE) {
         $_SESSION["success_message"] = "Email verification successful. You can now log in.";
-        header("Location: ../login.php");
+        header("Location: ../registration_successful.php");
     } else {
         $_SESSION["error_message"] = "Email verification failed.";
-        header("Location: ../error.php");
+        header("Location: ../registration_unsuccessful.php");
     }
 } else {
     $_SESSION["error_message"] = "Invalid email verification link.";

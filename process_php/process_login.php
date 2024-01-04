@@ -39,14 +39,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($user_result->num_rows == 1) {
         $user_row = $user_result->fetch_assoc();
         if (password_verify($password, $user_row["password"])) {
-            // Regular user found, create session variables and redirect to home page
-            $_SESSION["user_id"] = $user_row["user_id"];
-            $_SESSION["user_email"] = $user_row["email"];
-            $_SESSION["user_name"] = $user_row["first_name"] . " " . $user_row["last_name"];
-            $_SESSION["user_profile_photo"] = $user_row["profile_photo"];
+            // Check if the email is verified
+            if ($user_row["email_verified"] == 1) {
+                // Regular user found, create session variables and redirect to home page
+                $_SESSION["user_id"] = $user_row["user_id"];
+                $_SESSION["user_email"] = $user_row["email"];
+                $_SESSION["user_name"] = $user_row["first_name"] . " " . $user_row["last_name"];
+                $_SESSION["user_profile_photo"] = $user_row["profile_photo"];
 
-            header("Location: ../index.php");
-            exit();
+                header("Location: ../index.php");
+                exit();
+            } else {
+                // Email not verified, redirect to wait_verify_email.php
+                header("Location: ../wait_verify_email.php");
+                exit();
+            }
         }
     }
 
