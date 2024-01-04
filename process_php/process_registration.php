@@ -74,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $mail->Body = "Click on the link below to verify your email:<br><a href='$verificationLink'>$verificationLink</a>";
 
                 $mail->send();
-                header("Location: ../registration_successful.php");
+                header("Location: ../wait_verify_email.php");
             } catch (Exception $e) {
                 echo "Error sending email. Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
             }

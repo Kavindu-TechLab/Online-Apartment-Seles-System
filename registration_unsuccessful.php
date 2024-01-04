@@ -46,9 +46,8 @@ session_start();
                 <img style="margin-left: 60%;" src="images/logo.png" alt="Logo">
             </div>
             <h1 style="margin-bottom: 20px;">Welcome To Apartmint......!</h1>
-            <div class="success-message">
-                <h3>Email verification successful !!!! <br>You can now </h3>
-                <a href="login.php"><button type="submit" class="register-submit" value="Login">Login</button></a>
+            <div class="error-message">
+                <h2 style="margin-left: 90px; text-align: center;">Your email verification <br> failed!!! </h2>
             </div>
         </div>
     </div>
