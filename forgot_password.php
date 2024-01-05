@@ -11,7 +11,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style/style.css">
     <link rel="stylesheet" type="text/css" href="style/style_register.css">
-    <title>Login</title>
+    <title>Forgot Password</title>
 </head>
 
 <body>
@@ -35,31 +35,26 @@ session_start();
             </div>
             <h1 style="margin-bottom: 20px;">Welcome To Apartmint......!</h1>
 
-            
-
-            <!-- Login Form -->
-            <form action="process_php/process_login.php" method="post" >
+            <div class="forgot-password-section">
+            <h2 style="color: rgb(242, 138, 10);">Account Recovery</h2>
+            <form action="process_php/process_forgot_password.php" method="post">
                 <div class="form-row">
                     <label for="email">Email Address</label>
                     <input type="email" id="email" name="email" required>
                 </div>
-                <div class="form-row">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
 
-                <div class="form-row" style="margin-top: 0px; font-size:18px; font-weight:bold;">
-                    <a href="forgot_password.php">Forgot Password?</a>
-                </div>
-            <!-- Display error message here -->
-            <?php
-            if (isset($_SESSION["login_error"])) {
-                echo '<div class="error-message"><br>' . $_SESSION["login_error"] . '</div>';
-                unset($_SESSION["login_error"]); // Remove the session variable after displaying the message
-            }
-            ?>            
-                <button type="submit" class="register-submit" value="Login">Login</button>
+                <?php
+                    if (isset($_SESSION["reset_email_success_message"])) {
+                        echo '<div class="success-message">' . $_SESSION["reset_email_success_message"] . '</div>';
+                        unset($_SESSION["reset_email_success_message"]);
+                    } elseif (isset($_SESSION["reset_email_error"])) {
+                        echo '<div class="error-message">' . $_SESSION["reset_email_error"] . '</div>';
+                        unset($_SESSION["reset_email_error"]); 
+                    }
+                ?>    
+                <button type="submit" class="register-submit" value="Submit">Submit</button>
             </form>
+        </div>
         </div>
     </div>
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 27, 2023 at 10:30 AM
+-- Generation Time: Jan 05, 2024 at 06:30 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -129,16 +129,20 @@ CREATE TABLE `users` (
   `birthdate` date NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `profile_photo` varchar(500) NOT NULL
+  `profile_photo` varchar(500) NOT NULL,
+  `email_verified` tinyint(1) NOT NULL DEFAULT 0,
+  `verification_token` varchar(255) DEFAULT NULL,
+  `reset_token` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `first_name`, `last_name`, `birthdate`, `email`, `password`, `profile_photo`) VALUES
-(14, 'Chethiya', 'Bandaranayaka', '2001-03-30', 'user1@gmail.com', '$2y$10$eXZ.FM02ifCo8H9Ki94T3e3Jh93PBFVzT2w4wKFOcY2EbHY/BblMK', 'c81808e76c6546a757525a642a1b3023.jpg'),
-(15, 'Hashini', 'Wekkramsinhe', '2004-06-17', 'user2@gmail.com', '$2y$10$282jAY33jgYdTGOxSPyeQeuI/7./5GYn7ScE1o2HyB/LJsuQdOhMS', 'images152154545.jpeg');
+INSERT INTO `users` (`user_id`, `first_name`, `last_name`, `birthdate`, `email`, `password`, `profile_photo`, `email_verified`, `verification_token`, `reset_token`) VALUES
+(14, 'Chethiya', 'Bandaranayaka', '2001-03-30', 'user1@gmail.com', '$2y$10$eXZ.FM02ifCo8H9Ki94T3e3Jh93PBFVzT2w4wKFOcY2EbHY/BblMK', 'c81808e76c6546a757525a642a1b3023.jpg', 1, 'e327f3fe0939a5c93782bbbb7d779334', NULL),
+(15, 'Hashini', 'Wekkramsinhe', '2004-06-17', 'user2@gmail.com', '$2y$10$282jAY33jgYdTGOxSPyeQeuI/7./5GYn7ScE1o2HyB/LJsuQdOhMS', 'images152154545.jpeg', 1, 'cd65b1744d39a8283e9569a2d823cc4a', NULL),
+(16, 'Kavindu', 'Jayasekara', '2024-01-01', 'kavi86227@gmail.com', '$2y$10$YQUM61fvJWO2CSrJKHkNKe0cvkXvARoqIOEF41jW0PgVvqkkBz/WC', '1692162542_14512.jpeg', 1, '14358f1a29eaf6db6a7152333484979c', NULL);
 
 --
 -- Indexes for dumped tables
@@ -195,7 +199,7 @@ ALTER TABLE `listing_details`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Constraints for dumped tables
