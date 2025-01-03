@@ -89,8 +89,3 @@
 - **Scalability**: Built to support future enhancements, including mobile apps and advanced analytics.
 - **Accessibility**: Works seamlessly across devices with responsive design.
 
----
-
-## 📜 License
-
-This project is licensed under the [MIT License](LICENSE).
